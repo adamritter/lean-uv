@@ -1,3 +1,4 @@
+import LeanUV.ProgressContract
 import LeanUV.AdapterContract
 import LeanUV.Machine
 import LeanUV.Contract
@@ -18,3 +19,5 @@ import LeanUV.Contract
 #print axioms LeanUV.TCP.Machine.adapter_input_prefix
 #print axioms LeanUV.TCP.Machine.finalizers_weight
 #print axioms LeanUV.TCP.Machine.adapter_finalizer_weight
+
+#print axioms LeanUV.TCP.Machine.responsive_descent
