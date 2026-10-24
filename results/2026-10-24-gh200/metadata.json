@@ -1,0 +1,50 @@
+{
+  "started_utc": "2026-10-24T13:53:53.982931+00:00",
+  "platform": "Linux-6.11.0-1011-nvidia-64k-aarch64-with-glibc2.39",
+  "lscpu": "Architecture:                         aarch64\nCPU op-mode(s):                       64-bit\nByte Order:                           Little Endian\nCPU(s):                               64\nOn-line CPU(s) list:                  0-63\nVendor ID:                            ARM\nModel name:                           Neoverse-V2\nModel:                                0\nThread(s) per core:                   1\nCore(s) per socket:                   64\nSocket(s):                            1\nStepping:                             r0p0\nBogoMIPS:                             2000.00\nFlags:                                fp asimd evtstrm aes pmull sha1 sha2 crc32 atomics fphp asimdhp cpuid asimdrdm jscvt fcma lrcpc dcpop sha3 sm3 sm4 asimddp sha512 sve asimdfhm dit uscat ilrcpc flagm sb paca pacg dcpodp sve2 sveaes svepmull svebitperm svesha3 svesm4 flagm2 frint svei8mm svebf16 i8mm bf16 dgh bti\nNUMA node(s):                         8\nNUMA node0 CPU(s):                    0-63\nNUMA node2 CPU(s):                    \nNUMA node3 CPU(s):                    \nNUMA node4 CPU(s):                    \nNUMA node5 CPU(s):                    \nNUMA node6 CPU(s):                    \nNUMA node7 CPU(s):                    \nNUMA node8 CPU(s):                    \nVulnerability Gather data sampling:   Not affected\nVulnerability Itlb multihit:          Not affected\nVulnerability L1tf:                   Not affected\nVulnerability Mds:                    Not affected\nVulnerability Meltdown:               Not affected\nVulnerability Mmio stale data:        Not affected\nVulnerability Reg file data sampling: Not affected\nVulnerability Retbleed:               Not affected\nVulnerability Spec rstack overflow:   Not affected\nVulnerability Spec store bypass:      Mitigation; Speculative Store Bypass disabled via prctl\nVulnerability Spectre v1:             Mitigation; __user pointer sanitization\nVulnerability Spectre v2:             Not affected\nVulnerability Srbds:                  Not affected\nVulnerability Tsx async abort:        Not affected",
+  "lean": "Lean (version 4.26.0, aarch64-unknown-linux-gnu, commit d8204c9fd894f91bbb2cdfec5912ec8196fd8562, Release)",
+  "libuv": "libuv 1.48.0 (headers 1.48.0)",
+  "libuv_archive_sha256": "c2aa8e3a917d131fb692c32f9259440712f05cbb9a9811a8d7b50aa964aa735b",
+  "wrk_version": "wrk 4.2.0 [epoll] Copyright (C) 2012 Will Glozer",
+  "wrk_sha256": "fa23342e5998e527a3c549b782e9a091c71e5b44f559daba097b5fd8a87d1d2f",
+  "settings": {
+    "wrk": "/tmp/lean-uv-wrk/wrk",
+    "seconds": 10,
+    "warmup": 3,
+    "repeats": 3,
+    "connections": 256,
+    "client_threads": 8,
+    "first_cpu": 16,
+    "client_cpus": "24-31",
+    "port": 18176,
+    "configs": "std:1,std:4,uv:1,uv:2,uv:4,native:1,native:2,native:4",
+    "output": "results/2026-10-24-gh200"
+  },
+  "order_seed": 6544759498580482993,
+  "protocol": "HTTP/1.1 keep-alive, no pipelining, 1024-byte response, Linux loopback, no TLS",
+  "std_model": "one global UV loop plus LEAN_NUM_THREADS=N scheduler threads, restricted to N CPUs",
+  "uv_model": "N pinned native I/O workers, LEAN_NUM_THREADS=1 for unused Lean task pool",
+  "native_model": "N pinned libuv workers; delimiter-only C handler (less parsing work)",
+  "binary_sha256": {
+    "uv": "c1965559efef83c44ec1c53d692d920e9d0582997fdaa9a38a9a9d227d95890b",
+    "std": "83c33bd4dcd4f6ca293e0ba4eab3015fd1910b452ab7dbec3382bdccbf7dd9bf",
+    "native": "5be5f994f0f352a115683a0f4ceb017bac9925422edd378ffdadb945a95c9f4b"
+  },
+  "source_sha256": {
+    "LeanUV.lean": "fc02b877d62f982e953897aa0d4fb270ae213755945297a165b6a713bc9d236d",
+    "lakefile.lean": "7060e958edb9529f88be92388a3065ad374a7f17e255bd94e6b72610812e8398",
+    "Tests/SanitizerBaseline.lean": "dbba68c392b1a8a99fee9b8fa61c8942d0d5e832de821075837423f3a7684497",
+    "Tests/Server.lean": "480b27e6f0f8414a0bd6fde6c6facf43bdecdc41dc386a6c17db0435a50edd59",
+    "Bench/StdMain.lean": "b4e497cd6f188962b8928260789b050b52eb28631d8ca073bf5261904703af62",
+    "Bench/Native.c": "792b043013fcdb6ed30908d980edf2fe203d6a1003760559b66af6ab30be76e7",
+    "Bench/Protocol.lean": "5cf1daadf00f74cfeba092c8f34d569f46fc893fa6d843f78001b9357dd1751c",
+    "Bench/Main.lean": "e15606573415827dddbece5d1f293dfa011a73e406a1055d226fcacc4c8dfe22",
+    "scripts/sanitize.py": "7aeb78a67f92793c15719099268a93a62415f26ccfd0e41ddfdf9ef5b87210e5",
+    "scripts/test.py": "993ddbf919c75b03830bf9a10a6dc01f71554205b94285ffbbb205310142b253",
+    "scripts/build.sh": "f0a33a63ef5cfb507f66cb72041fcb10cba94f2903c2ed18ec26616110018aff",
+    "scripts/benchmark.py": "d6ebcf7905654e081b69e522076a4bac48fead9df271b54b2d6feb1fbeffcbfa",
+    "LeanUV/TCP.lean": "dc7486ff558cdd5a67840e83572679125c91548fa6fdad255d2deb8d1d3e11d7",
+    "native/uv.c": "ee325233e66280409c9aac910d83539d4419f54339831891ae4ec4cda216ef98",
+    "Examples/Echo.lean": "1dc28d91007dc0245de199ffe0504692c9dde1fd0b7cac392c3c602efc7eaf02"
+  }
+}

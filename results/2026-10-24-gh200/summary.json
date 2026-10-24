@@ -1,0 +1,98 @@
+[
+  {
+    "kind": "std",
+    "workers_or_cpu_budget": 1,
+    "median_rps": 44448.22,
+    "min_rps": 43058.55,
+    "max_rps": 44670.72,
+    "runs": [
+      44448.22,
+      44670.72,
+      43058.55
+    ]
+  },
+  {
+    "kind": "std",
+    "workers_or_cpu_budget": 4,
+    "median_rps": 47696.59,
+    "min_rps": 47426.72,
+    "max_rps": 48021.32,
+    "runs": [
+      47426.72,
+      48021.32,
+      47696.59
+    ]
+  },
+  {
+    "kind": "uv",
+    "workers_or_cpu_budget": 1,
+    "median_rps": 95554.77,
+    "min_rps": 94655.16,
+    "max_rps": 97133.95,
+    "runs": [
+      95554.77,
+      97133.95,
+      94655.16
+    ]
+  },
+  {
+    "kind": "uv",
+    "workers_or_cpu_budget": 2,
+    "median_rps": 194401.52,
+    "min_rps": 190795.24,
+    "max_rps": 203506.02,
+    "runs": [
+      203506.02,
+      190795.24,
+      194401.52
+    ]
+  },
+  {
+    "kind": "uv",
+    "workers_or_cpu_budget": 4,
+    "median_rps": 434741.88,
+    "min_rps": 432590.92,
+    "max_rps": 440150.99,
+    "runs": [
+      434741.88,
+      432590.92,
+      440150.99
+    ]
+  },
+  {
+    "kind": "native",
+    "workers_or_cpu_budget": 1,
+    "median_rps": 142821.87,
+    "min_rps": 141998.49,
+    "max_rps": 146130.74,
+    "runs": [
+      142821.87,
+      141998.49,
+      146130.74
+    ]
+  },
+  {
+    "kind": "native",
+    "workers_or_cpu_budget": 2,
+    "median_rps": 305694.69,
+    "min_rps": 304995.6,
+    "max_rps": 307790.55,
+    "runs": [
+      305694.69,
+      304995.6,
+      307790.55
+    ]
+  },
+  {
+    "kind": "native",
+    "workers_or_cpu_budget": 4,
+    "median_rps": 661676.1,
+    "min_rps": 654816.21,
+    "max_rps": 662739.68,
+    "runs": [
+      661676.1,
+      654816.21,
+      662739.68
+    ]
+  }
+]

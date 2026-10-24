@@ -1,0 +1,2 @@
+A fresh standalone Lake package required lean_uv via a local path, built its own executable, ran two workers, and returned both workers after 20 ms.
+downstream package: OK

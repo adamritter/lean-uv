@@ -1,0 +1,37 @@
+{
+  "checked_utc": "2026-10-24T14:01:06.588610+00:00",
+  "final_binaries_match_measured_binaries": true,
+  "binary_sha256": {
+    "uv": "c1965559efef83c44ec1c53d692d920e9d0582997fdaa9a38a9a9d227d95890b",
+    "std": "83c33bd4dcd4f6ca293e0ba4eab3015fd1910b452ab7dbec3382bdccbf7dd9bf",
+    "native": "5be5f994f0f352a115683a0f4ceb017bac9925422edd378ffdadb945a95c9f4b"
+  },
+  "source_sha256": {
+    "lean-toolchain": "e8173aad377a6d70041e5f7a5d8895ed587628f5cab243c53a18c40a1b7b6bf8",
+    "LeanUV.lean": "fc02b877d62f982e953897aa0d4fb270ae213755945297a165b6a713bc9d236d",
+    ".gitignore": "46fb2fd6647edd2c37feafcc1ac3018ffbc3eadd4bc2bb8763087b50c1011f09",
+    "LICENSE": "24777a041ec3e4efa88a49b3c5673169f68c5e87e1fad5a4d5704c88fec5049e",
+    "README.md": "62fc35bd83ff3fbc53505d5de28ef394df0536ba6b00efa363f463b04c58bc2c",
+    "lakefile.lean": "7060e958edb9529f88be92388a3065ad374a7f17e255bd94e6b72610812e8398",
+    "lake-manifest.json": "714f660f658b4c44e5b6430e72e6d9f3aa5a247b5df8e2735ac205a32fbb8385",
+    "Tests/SanitizerBaseline.lean": "dbba68c392b1a8a99fee9b8fa61c8942d0d5e832de821075837423f3a7684497",
+    "Tests/Server.lean": "0ec2b43eb081c71c6fe4a48a8bb8d868f09591d48cb378694264c66c12eb863d",
+    "Bench/StdMain.lean": "b4e497cd6f188962b8928260789b050b52eb28631d8ca073bf5261904703af62",
+    "Bench/Native.c": "792b043013fcdb6ed30908d980edf2fe203d6a1003760559b66af6ab30be76e7",
+    "Bench/Protocol.lean": "5cf1daadf00f74cfeba092c8f34d569f46fc893fa6d843f78001b9357dd1751c",
+    "Bench/Main.lean": "e15606573415827dddbece5d1f293dfa011a73e406a1055d226fcacc4c8dfe22",
+    "scripts/lsan.supp": "1d9de31f30a800bf8e835dbba6ee1fb02a540721b9370d35b0c8315ad9df9b26",
+    "scripts/sanitize.py": "7aeb78a67f92793c15719099268a93a62415f26ccfd0e41ddfdf9ef5b87210e5",
+    "scripts/test.py": "17b8c587baba8c93c2c8fd4a185c18c1505a4fe4ff4059bd703e35ae6328d7f5",
+    "scripts/build.sh": "f0a33a63ef5cfb507f66cb72041fcb10cba94f2903c2ed18ec26616110018aff",
+    "scripts/benchmark.py": "d6ebcf7905654e081b69e522076a4bac48fead9df271b54b2d6feb1fbeffcbfa",
+    "LeanUV/TCP.lean": "c85023e4b0bb545232d67f69e22f063d35b96a7c13eec4d1616043995eeec939",
+    "native/uv.c": "ee325233e66280409c9aac910d83539d4419f54339831891ae4ec4cda216ef98",
+    "Examples/Echo.lean": "1dc28d91007dc0245de199ffe0504692c9dde1fd0b7cac392c3c602efc7eaf02",
+    ".github/workflows/ci.yml": "d3db90dd326e50600250c096d8ab7e7bb570592231cdcca0192655ee464cf449"
+  },
+  "validation_seed": 16621617030424579095,
+  "sanitizer_seed": 16727284260621823659,
+  "checks": 23,
+  "sanitizer_scope": "Own C FFI instrumented with ASan/UBSan; Init startup-only leak suppression with no-I/O control; prebuilt Lean runtime uninstrumented."
+}

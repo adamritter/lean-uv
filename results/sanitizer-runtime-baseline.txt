@@ -1,0 +1,558 @@
+
+=================================================================
+==1629748==ERROR: LeakSanitizer: detected memory leaks
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaa04 in lean_nat_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51aa04) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99ca73e4 in l_Int_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2173e4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c147b0 in initialize_Init_Data_UInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1847b0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99c4e5c4 in initialize_Init_Data_UInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1be5c4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ef9a34 in initialize_Init_Data_Char_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x469a34) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99d6a33c in initialize_Init_Data_Char (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2da33c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ba8dec in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118dec) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #14 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #15 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaa04 in lean_nat_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51aa04) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99ca73e4 in l_Int_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2173e4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c14384 in initialize_Init_Data_UInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x184384) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99c4e5c4 in initialize_Init_Data_UInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1be5c4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ef9a34 in initialize_Init_Data_Char_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x469a34) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99d6a33c in initialize_Init_Data_Char (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2da33c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ba8dec in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118dec) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #14 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #15 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fa8ce8 in lean_cstr_to_nat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x518ce8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99dc1418 in initialize_Init_Data_SInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x331418) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99dcb658 in initialize_Init_Data_SInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33b658) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99e7eafc in initialize_Init_GrindInstances_ToInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3eeafc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99c99e3c in initialize_Init_Data_Int_OfNat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x209e3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99de4cb0 in initialize_Init_Data_Int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x354cb0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ba8e64 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118e64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #14 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #15 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fa8ce8 in lean_cstr_to_nat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x518ce8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99f05e88 in initialize_Init_Data_Range_Polymorphic_UInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x475e88) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c702a4 in initialize_Init_Data_Range_Polymorphic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1e02a4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99ba93b4 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1193b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #11 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #12 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fa8ce8 in lean_cstr_to_nat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x518ce8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99b6d0a0 in initialize_Init_Prelude (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0xdd0a0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99ac5524 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35524) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #9 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #10 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaa04 in lean_nat_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51aa04) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99b6d0d4 in initialize_Init_Prelude (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0xdd0d4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99ac5524 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35524) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #9 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #10 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaa04 in lean_nat_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51aa04) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99dc19a0 in initialize_Init_Data_SInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3319a0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99dcb658 in initialize_Init_Data_SInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33b658) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99e7eafc in initialize_Init_GrindInstances_ToInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3eeafc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99c99e3c in initialize_Init_Data_Int_OfNat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x209e3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99de4cb0 in initialize_Init_Data_Int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x354cb0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ba8e64 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118e64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #14 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #15 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fa8ce8 in lean_cstr_to_nat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x518ce8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99c07b64 in initialize_Init_Data_UInt_BasicAux (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x177b64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c64018 in initialize_Init_Data_Char_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1d4018) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99cb3c88 in initialize_Init_Data_String_Bootstrap (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x223c88) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99c965bc in initialize_Init_Data_Format_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2065bc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99dfeb5c in initialize_Init_Data_Repr (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x36eb5c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99c55414 in initialize_Init_Data_ToString_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1c5414) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99b0fb28 in initialize_Init_Util (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x7fb28) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99e823c0 in initialize_Init_GetElem (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3f23c0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99d2cd9c in initialize_Init_Data_Array_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x29cd9c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99f5b948 in initialize_Init_Data_Array_GetLit (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x4cb948) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xc25b99e4caf4 in initialize_Init_Meta_Defs (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3bcaf4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #15 0xc25b99afe808 in initialize_Init_Meta (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6e808) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #16 0xc25b99accea8 in initialize_Init_Conv (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3cea8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #17 0xc25b99e1eea4 in initialize_Init_NotationExtra (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x38eea4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #18 0xc25b99bb613c in initialize_Init_TacticsExtra (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x12613c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #19 0xc25b99ac559c in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3559c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #20 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #21 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #22 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #23 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #24 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaa04 in lean_nat_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51aa04) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99c07bb4 in initialize_Init_Data_UInt_BasicAux (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x177bb4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c64018 in initialize_Init_Data_Char_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1d4018) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99cb3c88 in initialize_Init_Data_String_Bootstrap (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x223c88) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99c965bc in initialize_Init_Data_Format_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2065bc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99dfeb5c in initialize_Init_Data_Repr (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x36eb5c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99c55414 in initialize_Init_Data_ToString_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1c5414) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99b0fb28 in initialize_Init_Util (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x7fb28) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99e823c0 in initialize_Init_GetElem (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3f23c0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99d2cd9c in initialize_Init_Data_Array_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x29cd9c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99f5b948 in initialize_Init_Data_Array_GetLit (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x4cb948) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xc25b99e4caf4 in initialize_Init_Meta_Defs (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3bcaf4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #15 0xc25b99afe808 in initialize_Init_Meta (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6e808) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #16 0xc25b99accea8 in initialize_Init_Conv (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3cea8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #17 0xc25b99e1eea4 in initialize_Init_NotationExtra (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x38eea4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #18 0xc25b99bb613c in initialize_Init_TacticsExtra (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x12613c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #19 0xc25b99ac559c in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3559c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #20 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #21 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #22 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #23 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #24 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaa04 in lean_nat_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51aa04) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99f06030 in initialize_Init_Data_Range_Polymorphic_UInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x476030) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c702a4 in initialize_Init_Data_Range_Polymorphic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1e02a4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99ba93b4 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1193b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #11 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #12 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 16 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaa04 in lean_nat_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51aa04) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99dff2d4 in initialize_Init_Data_Repr (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x36f2d4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c55414 in initialize_Init_Data_ToString_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1c5414) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99b0fb28 in initialize_Init_Util (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x7fb28) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99e823c0 in initialize_Init_GetElem (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3f23c0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99d2cd9c in initialize_Init_Data_Array_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x29cd9c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99f5b948 in initialize_Init_Data_Array_GetLit (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x4cb948) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99e4caf4 in initialize_Init_Meta_Defs (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3bcaf4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99afe808 in initialize_Init_Meta (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6e808) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99accea8 in initialize_Init_Conv (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3cea8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99e1eea4 in initialize_Init_NotationExtra (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x38eea4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xc25b99bb613c in initialize_Init_TacticsExtra (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x12613c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #15 0xc25b99ac559c in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3559c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #16 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #17 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #18 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #19 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #20 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaf68 in lean::mpz_to_int(lean::mpz const&) (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51af68) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99fab174 in lean_int_big_neg (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b174) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99f0edb8 in initialize_Init_Data_Range_Polymorphic_SInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x47edb8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99c702cc in initialize_Init_Data_Range_Polymorphic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1e02cc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ba93b4 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1193b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #12 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #13 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fafe84 in lean::mpz_to_int_core(lean::mpz const&) (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51fe84) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99fab100 in lean_big_int64_to_int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b100) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99dc1ff8 in initialize_Init_Data_SInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x331ff8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99dcb658 in initialize_Init_Data_SInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33b658) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99e7eafc in initialize_Init_GrindInstances_ToInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3eeafc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99c99e3c in initialize_Init_Data_Int_OfNat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x209e3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99de4cb0 in initialize_Init_Data_Int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x354cb0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ba8e64 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118e64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #15 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #16 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fafe84 in lean::mpz_to_int_core(lean::mpz const&) (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51fe84) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99fab100 in lean_big_int64_to_int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b100) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99f0ef48 in initialize_Init_Data_Range_Polymorphic_SInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x47ef48) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99c702cc in initialize_Init_Data_Range_Polymorphic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1e02cc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ba93b4 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1193b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #12 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #13 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fafe84 in lean::mpz_to_int_core(lean::mpz const&) (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51fe84) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99fab100 in lean_big_int64_to_int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b100) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99dc1fec in initialize_Init_Data_SInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x331fec) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99dcb658 in initialize_Init_Data_SInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33b658) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99e7eafc in initialize_Init_GrindInstances_ToInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3eeafc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99c99e3c in initialize_Init_Data_Int_OfNat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x209e3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99de4cb0 in initialize_Init_Data_Int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x354cb0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ba8e64 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118e64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #15 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #16 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fa8ce8 in lean_cstr_to_nat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x518ce8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99f0ec74 in initialize_Init_Data_Range_Polymorphic_SInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x47ec74) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c702cc in initialize_Init_Data_Range_Polymorphic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1e02cc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99ba93b4 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1193b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #11 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #12 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fa8ce8 in lean_cstr_to_nat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x518ce8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99dc1564 in initialize_Init_Data_SInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x331564) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99dcb658 in initialize_Init_Data_SInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33b658) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99e7eafc in initialize_Init_GrindInstances_ToInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3eeafc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99c99e3c in initialize_Init_Data_Int_OfNat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x209e3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99de4cb0 in initialize_Init_Data_Int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x354cb0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ba8e64 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118e64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #14 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #15 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fa9260 in lean_nat_big_sub (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x519260) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99c07c00 in initialize_Init_Data_UInt_BasicAux (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x177c00) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c64018 in initialize_Init_Data_Char_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1d4018) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99cb3c88 in initialize_Init_Data_String_Bootstrap (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x223c88) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99c965bc in initialize_Init_Data_Format_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2065bc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99dfeb5c in initialize_Init_Data_Repr (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x36eb5c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99c55414 in initialize_Init_Data_ToString_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1c5414) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99b0fb28 in initialize_Init_Util (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x7fb28) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99e823c0 in initialize_Init_GetElem (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3f23c0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99d2cd9c in initialize_Init_Data_Array_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x29cd9c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99f5b948 in initialize_Init_Data_Array_GetLit (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x4cb948) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xc25b99e4caf4 in initialize_Init_Meta_Defs (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3bcaf4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #15 0xc25b99afe808 in initialize_Init_Meta (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6e808) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #16 0xc25b99accea8 in initialize_Init_Conv (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3cea8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #17 0xc25b99e1eea4 in initialize_Init_NotationExtra (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x38eea4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #18 0xc25b99bb613c in initialize_Init_TacticsExtra (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x12613c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #19 0xc25b99ac559c in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3559c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #20 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #21 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #22 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #23 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #24 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fab07c in lean_big_size_t_to_int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b07c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99f0ec4c in initialize_Init_Data_Range_Polymorphic_SInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x47ec4c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c702cc in initialize_Init_Data_Range_Polymorphic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1e02cc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99ba93b4 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1193b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #11 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #12 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fafe84 in lean::mpz_to_int_core(lean::mpz const&) (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51fe84) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99fab100 in lean_big_int64_to_int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b100) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99dc2034 in initialize_Init_Data_SInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x332034) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99dcb658 in initialize_Init_Data_SInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33b658) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99e7eafc in initialize_Init_GrindInstances_ToInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3eeafc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99c99e3c in initialize_Init_Data_Int_OfNat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x209e3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99de4cb0 in initialize_Init_Data_Int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x354cb0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ba8e64 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118e64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #15 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #16 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fafe84 in lean::mpz_to_int_core(lean::mpz const&) (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51fe84) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99fab100 in lean_big_int64_to_int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b100) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99dc2024 in initialize_Init_Data_SInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x332024) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99dcb658 in initialize_Init_Data_SInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33b658) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99e7eafc in initialize_Init_GrindInstances_ToInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3eeafc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99c99e3c in initialize_Init_Data_Int_OfNat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x209e3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99de4cb0 in initialize_Init_Data_Int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x354cb0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ba8e64 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118e64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #15 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #16 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaf68 in lean::mpz_to_int(lean::mpz const&) (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51af68) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99fab174 in lean_int_big_neg (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b174) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99dc201c in initialize_Init_Data_SInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33201c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99dcb658 in initialize_Init_Data_SInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33b658) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99e7eafc in initialize_Init_GrindInstances_ToInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3eeafc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99c99e3c in initialize_Init_Data_Int_OfNat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x209e3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99de4cb0 in initialize_Init_Data_Int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x354cb0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ba8e64 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118e64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #15 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #16 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaf68 in lean::mpz_to_int(lean::mpz const&) (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51af68) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99fab474 in lean_int_big_sub (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b474) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99dc2010 in initialize_Init_Data_SInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x332010) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99dcb658 in initialize_Init_Data_SInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33b658) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99e7eafc in initialize_Init_GrindInstances_ToInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3eeafc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99c99e3c in initialize_Init_Data_Int_OfNat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x209e3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99de4cb0 in initialize_Init_Data_Int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x354cb0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ba8e64 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118e64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #15 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #16 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fafe84 in lean::mpz_to_int_core(lean::mpz const&) (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51fe84) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99fab100 in lean_big_int64_to_int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b100) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99f0ef3c in initialize_Init_Data_Range_Polymorphic_SInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x47ef3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99c702cc in initialize_Init_Data_Range_Polymorphic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1e02cc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ba93b4 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1193b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #12 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #13 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaa04 in lean_nat_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51aa04) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99ca73e4 in l_Int_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2173e4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99f0ed78 in initialize_Init_Data_Range_Polymorphic_SInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x47ed78) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99c702cc in initialize_Init_Data_Range_Polymorphic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1e02cc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ba93b4 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1193b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #12 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #13 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaa04 in lean_nat_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51aa04) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99ca73e4 in l_Int_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2173e4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99f0edac in initialize_Init_Data_Range_Polymorphic_SInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x47edac) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99c702cc in initialize_Init_Data_Range_Polymorphic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1e02cc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ba93b4 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1193b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #12 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #13 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaa04 in lean_nat_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51aa04) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99ca73e4 in l_Int_pow (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2173e4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99dc1ae4 in initialize_Init_Data_SInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x331ae4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99dcb658 in initialize_Init_Data_SInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x33b658) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99e7eafc in initialize_Init_GrindInstances_ToInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3eeafc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99c99e3c in initialize_Init_Data_Int_OfNat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x209e3c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99de4cb0 in initialize_Init_Data_Int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x354cb0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ba8e64 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118e64) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #15 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #16 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99faaf68 in lean::mpz_to_int(lean::mpz const&) (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51af68) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99fab474 in lean_int_big_sub (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b474) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99f0edf0 in initialize_Init_Data_Range_Polymorphic_SInt (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x47edf0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99c702cc in initialize_Init_Data_Range_Polymorphic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1e02cc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99ba93b4 in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1193b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #12 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #13 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fab07c in lean_big_size_t_to_int (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x51b07c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99c13ff4 in initialize_Init_Data_UInt_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x183ff4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c4e5c4 in initialize_Init_Data_UInt_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1be5c4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99ef9a34 in initialize_Init_Data_Char_Lemmas (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x469a34) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99d6a33c in initialize_Init_Data_Char (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2da33c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99ba8dec in initialize_Init_Data (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x118dec) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99ac56b4 in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x356b4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #13 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #14 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+Direct leak of 8 byte(s) in 1 object(s) allocated from:
+    #0 0xfe28c2ed76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xc25b9a0936d8 in __gmp_default_allocate (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6036d8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #2 0xc25b9a07a104 in __gmpz_init_set (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x5ea104) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #3 0xc25b99fa8ce8 in lean_cstr_to_nat (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x518ce8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #4 0xc25b99c07b78 in initialize_Init_Data_UInt_BasicAux (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x177b78) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #5 0xc25b99c64018 in initialize_Init_Data_Char_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1d4018) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #6 0xc25b99cb3c88 in initialize_Init_Data_String_Bootstrap (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x223c88) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #7 0xc25b99c965bc in initialize_Init_Data_Format_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x2065bc) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #8 0xc25b99dfeb5c in initialize_Init_Data_Repr (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x36eb5c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #9 0xc25b99c55414 in initialize_Init_Data_ToString_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x1c5414) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #10 0xc25b99b0fb28 in initialize_Init_Util (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x7fb28) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #11 0xc25b99e823c0 in initialize_Init_GetElem (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3f23c0) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #12 0xc25b99d2cd9c in initialize_Init_Data_Array_Basic (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x29cd9c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #13 0xc25b99f5b948 in initialize_Init_Data_Array_GetLit (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x4cb948) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #14 0xc25b99e4caf4 in initialize_Init_Meta_Defs (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3bcaf4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #15 0xc25b99afe808 in initialize_Init_Meta (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x6e808) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #16 0xc25b99accea8 in initialize_Init_Conv (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3cea8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #17 0xc25b99e1eea4 in initialize_Init_NotationExtra (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x38eea4) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #18 0xc25b99bb613c in initialize_Init_TacticsExtra (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x12613c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #19 0xc25b99ac559c in initialize_Init (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3559c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #20 0xc25b99ac5320 in initialize_Tests_SanitizerBaseline (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x35320) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #21 0xc25b99ac53b8 in main (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x353b8) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+    #22 0xfe28c25384c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #23 0xfe28c2538594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #24 0xc25b99ac516c in _start (/home/ubuntu/src/affine-field-lambda-20260912/lean-uv/bin/sanitized/baseline+0x3516c) (BuildId: be1c4948eec779c1b322c237cc12326d520305e7)
+
+SUMMARY: AddressSanitizer: 328 byte(s) leaked in 30 allocation(s).

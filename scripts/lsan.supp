@@ -1,0 +1,4 @@
+# The no-I/O Tests.SanitizerBaseline executable reproduces these Init startup
+# allocations. The raw unsuppressed report is preserved under results/.
+# This does not match any allocation made by the native TCP worker callbacks.
+leak:initialize_Init_
