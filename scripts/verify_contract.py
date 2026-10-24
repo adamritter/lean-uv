@@ -22,6 +22,6 @@ for name, _, deps in re.findall(r"'([^']+)' (does not depend on any axioms|depen
 assert set(rows) == declared, run.stdout
 print(json.dumps({'result':'PASS','lean':subprocess.check_output(['lean','--version'],text=True).strip(),
     'source_sha256':{str(path.relative_to(root)):hashlib.sha256(path.read_bytes()).hexdigest() for path,_ in modules}, 'axioms':rows,
-    'explicit_hypotheses':['NativeContract','ProgressContract','Machine.ExecutionContract','Machine.AdapterContract','Machine.ResponsiveContract'],
+    'explicit_hypotheses':['NativeContract','ProgressContract','Machine.ExecutionContract','Machine.AdapterContract','Machine.ResponsiveContract','Machine.CompletionContract'],
     'native_implementation_proved':False,
     'http_correctness_assumed':False},indent=2))

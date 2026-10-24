@@ -72,4 +72,25 @@ theorem adapter_finalizer_weight (events : List (MachineEvent Reply)) (commands 
   rw [adapter.finalizersFaithful]
   exact finalizers_weight commands weight
 
+
+/-- The generic write-completion boundary. At a written event, every logical
+write issued before that acknowledgment has reached the TCP stack, provided no
+native failure interrupted that prefix. This refers to byte counts/order only,
+not peer application consumption or any protocol's response semantics. A failed
+write's partial prefix is covered by AdapterContract/NativeContract instead. -/
+structure CompletionContract (events : List (MachineEvent Reply)) (commands : List (MachineCommand Work))
+    (native : Contract.Observation) : Prop where
+  acknowledged : ∀ before after, events = before ++ .written :: after →
+    (∀ event ∈ before, event ≠ .failed) →
+    Contract.Prefix (commandBytes (commands.take before.length)) native.transportOutput
+
+/-- Acknowledging a logical gather write means all its bytes, including splits
+at the native queue limit, precede the remaining observed TCP output. -/
+theorem acknowledged_command_prefix (events : List (MachineEvent Reply)) (commands : List (MachineCommand Work))
+    (native : Contract.Observation) (contract : CompletionContract events commands native)
+    (before after : List (MachineEvent Reply)) (position : events = before ++ .written :: after)
+    (noFailure : ∀ event ∈ before, event ≠ .failed) :
+    Contract.Prefix (commandBytes (commands.take before.length)) native.transportOutput :=
+  contract.acknowledged before after position noFailure
+
 end LeanUV.TCP.Machine

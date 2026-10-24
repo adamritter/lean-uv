@@ -21,3 +21,5 @@ import LeanUV.Contract
 #print axioms LeanUV.TCP.Machine.adapter_finalizer_weight
 
 #print axioms LeanUV.TCP.Machine.responsive_descent
+
+#print axioms LeanUV.TCP.Machine.acknowledged_command_prefix
