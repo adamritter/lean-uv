@@ -1,0 +1,9 @@
+{
+  "toolchains": [
+    "4.26.0",
+    "4.35.0"
+  ],
+  "command": "python3 scripts/sanitize.py",
+  "results": "Both toolchains passed the native binding and pure-machine socket regressions under ASan/UBSan; startup-only Lean runtime LSan suppression applied.",
+  "prior_failure": "CI linker omitted newly imported Contract and Machine objects. Replaced hardcoded object list with the local source import closure. No sanitizer executable ran in those failed CI jobs."
+}

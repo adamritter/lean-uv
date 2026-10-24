@@ -37,4 +37,6 @@ jobs:
           path: |
             results/validation.json
             results/sanitizer.json
+            results/sanitizer-machine.json
+            results/machine-validation.json
             results/sanitizer-runtime-baseline.txt

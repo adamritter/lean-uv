@@ -53,6 +53,9 @@ def main (args : List String) : IO Unit := do
           return some (.bytes bytes)
         | .acquire remaining bytes =>
           acquired.modify (· + 1)
+          if (← acquired.get) == 255 then
+            IO.println "yield-ready"
+            (← IO.getStdout).flush
           return some (.acquired remaining bytes)
         | .release owned =>
           IO.println s!"released {worker} owned {owned} acquired {← acquired.get}"

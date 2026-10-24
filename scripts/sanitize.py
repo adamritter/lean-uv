@@ -4,6 +4,7 @@ Uses system GCC's sanitizer runtimes. Builds separate executables, preserving th
 release binaries used for throughput measurements.
 """
 import os
+import re
 from pathlib import Path
 import subprocess
 
@@ -14,19 +15,36 @@ def run(cmd, **kwargs):
     subprocess.run([str(x) for x in cmd], cwd=ROOT, check=True, **kwargs)
 
 
+def local_modules(module):
+    """Link the same repository import closure that Lake compiled."""
+    found = []
+    def visit(name):
+        if name in found: return
+        source = ROOT / (name + '.lean')
+        for declaration in re.findall(r'^import\s+([^\n]+)', source.read_text(), re.M):
+            for imported in declaration.split('--',1)[0].split():
+                dependency = imported.replace('.', '/')
+                if (ROOT / (dependency + '.lean')).is_file(): visit(dependency)
+        found.append(name)
+    visit(module)
+    return found
+
+
 def main():
-    run(["lake", "build", "sanitizer_baseline"])
+    run(["lake", "build", "uv_http", "uv_test", "uv_machine_test", "sanitizer_baseline"])
     prefix = Path(subprocess.check_output(["lean", "--print-prefix"], cwd=ROOT, text=True).strip())
     output = ROOT / "bin/sanitized"
     output.mkdir(parents=True, exist_ok=True)
     obj = output / "uv.o"
     run(["cc", "-O1", "-g", "-fno-omit-frame-pointer", "-fsanitize=address,undefined",
          "-std=c11", "-pthread", "-I", prefix/"include", "-c", "native/uv.c", "-o", obj])
-    for exe, modules in {
-        "uv_http": ["LeanUVBench/Main", "LeanUVBench/Protocol", "LeanUV/TCP", "LeanUV"],
-        "uv_test": ["LeanUVTests/Server", "LeanUV/TCP", "LeanUV"],
-        "baseline": ["LeanUVTests/SanitizerBaseline"],
+    for exe, root_module in {
+        "uv_http": "LeanUVBench/Main",
+        "uv_test": "LeanUVTests/Server",
+        "uv_machine_test": "LeanUVTests/Machine",
+        "baseline": "LeanUVTests/SanitizerBaseline",
     }.items():
+        modules = local_modules(root_module)
         objects = [ROOT / f".lake/build/ir/{module}.c.o.export" for module in modules]
         # Let system GCC supply its shared unwinder. Lean's static libunwind
         # conflicts with libasan's DWARF unwinding on the no-I/O baseline.
@@ -47,6 +65,8 @@ def main():
     env["LSAN_OPTIONS"] = f"suppressions={ROOT/'scripts/lsan.supp'}:print_suppressions=0"
     run([output/"baseline"], env=env)
     run(["python3", "scripts/test.py", "--bin-dir", output, "--output", "results/sanitizer.json"], env=env)
+    run(["python3", "scripts/test_machine.py", "--binary", output/"uv_machine_test",
+         "--output", "results/sanitizer-machine.json"], env=env)
 
 
 if __name__ == "__main__":

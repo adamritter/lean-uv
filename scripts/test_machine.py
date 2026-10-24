@@ -1,18 +1,24 @@
 #!/usr/bin/env python3
 """Real-socket tests of the generic pure reactor and its native effect adapter."""
 from concurrent.futures import ThreadPoolExecutor
+import argparse
 import hashlib
 import json
 import os
 from pathlib import Path
 import random
 import signal
+import select
 import socket
 import subprocess
 import time
 
 root = Path(__file__).resolve().parents[1]
-binary = root / '.lake/build/bin/uv_machine_test'
+parser=argparse.ArgumentParser()
+parser.add_argument('--binary',type=Path,default=root/'.lake/build/bin/uv_machine_test')
+parser.add_argument('--output',type=Path,default=root/'results/machine-validation.json')
+args=parser.parse_args()
+binary=args.binary
 seed = int.from_bytes(os.urandom(8), 'big')
 rng = random.Random(seed)
 rows = []
@@ -22,6 +28,7 @@ for mode in ['echo', 'delay', 'gather', 'fail', 'fuel']:
         s.bind(('127.0.0.1', 0)); port = s.getsockname()[1]
     proc = subprocess.Popen([str(binary), mode, str(port)], stdout=subprocess.PIPE,
         stderr=subprocess.PIPE, text=True, env={**os.environ,'LEAN_NUM_THREADS':'1'})
+    preamble=b''
     try:
         deadline = time.monotonic() + 8
         while True:
@@ -36,7 +43,15 @@ for mode in ['echo', 'delay', 'gather', 'fail', 'fuel']:
             # acquired resource must already have been adopted by the pure state.
             client = socket.create_connection(('127.0.0.1',port),timeout=2)
             client.sendall(b'resource')
-            time.sleep(.003)
+            deadline=time.monotonic()+8
+            while b'\nyield-ready\n' not in b'\n'+preamble:
+                remaining=deadline-time.monotonic()
+                assert remaining>0, ('resource marker timeout',preamble)
+                readable,_,_=select.select([proc.stdout],[],[],remaining)
+                assert readable, ('resource marker timeout',preamble)
+                part=os.read(proc.stdout.fileno(),4096)
+                assert part, ('server exited before acquiring resources',preamble)
+                preamble+=part
             sizes = [0]
         else:
             payloads = [rng.randbytes(rng.randint(1,65536)) for _ in range(24)]
@@ -72,11 +87,13 @@ for mode in ['echo', 'delay', 'gather', 'fail', 'fuel']:
     finally:
         proc.send_signal(signal.SIGTERM)
         out,err=proc.communicate(timeout=10)
+    out=preamble.decode()+out
     assert proc.returncode == 0, (mode,proc.returncode,out,err)
     assert not err, (mode,err)
     released=[0]*4;accepted=[0]*4;errors=[0]*4;resources=[]
     for line in out.splitlines():
         parts=line.split()
+        if parts[0]=='yield-ready':continue
         if parts[0]=='released':
             released[int(parts[1])]+=1
             owned,acquired=int(parts[3]),int(parts[5])
@@ -95,5 +112,6 @@ for mode in ['echo', 'delay', 'gather', 'fail', 'fuel']:
 result={'result':'PASS','seed':seed,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),
     'source_sha256':hashlib.sha256((root/'LeanUV/Machine.lean').read_bytes()).hexdigest(),'runs':rows}
 (root/'results').mkdir(exist_ok=True)
-(root/'results/machine-validation.json').write_text(json.dumps(result,indent=2)+'\n')
+args.output.parent.mkdir(parents=True,exist_ok=True)
+args.output.write_text(json.dumps(result,indent=2)+'\n')
 print(json.dumps(result,indent=2))

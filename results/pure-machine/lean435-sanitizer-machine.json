@@ -1,0 +1,128 @@
+{
+  "result": "PASS",
+  "seed": 17777337539509369941,
+  "binary_sha256": "9efba2c0c71b582998b40b1e7f23c257862a825c03c3a4d2a2360dff88c61d95",
+  "source_sha256": "baddfe1fd4fdd65d13afcbb977b2cd707c706da7a7576ca7c9e0454eca49a9ce",
+  "runs": [
+    {
+      "mode": "echo",
+      "connections": 34,
+      "bytes_verified": 2892980,
+      "resources_released": 0,
+      "accepted_by_worker": [
+        5,
+        12,
+        8,
+        9
+      ],
+      "release_calls_by_worker": [
+        5,
+        12,
+        8,
+        9
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "delay",
+      "connections": 33,
+      "bytes_verified": 899798,
+      "resources_released": 0,
+      "accepted_by_worker": [
+        7,
+        7,
+        10,
+        9
+      ],
+      "release_calls_by_worker": [
+        7,
+        7,
+        10,
+        9
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "gather",
+      "connections": 34,
+      "bytes_verified": 2911353,
+      "resources_released": 0,
+      "accepted_by_worker": [
+        12,
+        4,
+        9,
+        9
+      ],
+      "release_calls_by_worker": [
+        12,
+        4,
+        9,
+        9
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "fail",
+      "connections": 34,
+      "bytes_verified": 0,
+      "resources_released": 0,
+      "accepted_by_worker": [
+        10,
+        7,
+        8,
+        9
+      ],
+      "release_calls_by_worker": [
+        10,
+        7,
+        8,
+        9
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "fuel",
+      "connections": 2,
+      "bytes_verified": 0,
+      "resources_released": 255,
+      "accepted_by_worker": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "release_calls_by_worker": [
+        0,
+        1,
+        0,
+        1
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}
