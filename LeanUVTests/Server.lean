@@ -20,11 +20,44 @@ def main (args : List String) : IO Unit := do
     return fun socket => do
       if mode == "setup-error" then throw (IO.userError "intentional setup failure")
       if mode == "retained" then saved.set (some socket)
+      let pending ← IO.mkRef (none : Option (IO.Promise (Except IO.Error ByteArray)))
       return {
+        onWake := do
+          if let some promise ← pending.get then
+            if ← IO.hasFinished promise.result? then
+              socket.setWakeup false
+              pending.set none
+              match promise.result?.get with
+              | some (.ok bytes) =>
+                socket.sendv #["wake:".toUTF8, .empty, bytes]
+                socket.resume
+              | _ => socket.close
         onData := fun bytes => do
           if mode == "throw" then throw (IO.userError "intentional callback failure")
-          if mode == "large" then
-            for _ in [:64] do socket.send block
+          if mode == "wake" then
+            socket.pause
+            let promise ← IO.Promise.new
+            pending.set (some promise)
+            socket.setWakeup true
+            let _ ← IO.asTask (prio := .dedicated) do
+              IO.sleep 20
+              promise.resolve (.ok bytes)
+          else if mode == "gather" then
+            let middle := bytes.size / 2
+            socket.sendv #[.empty, bytes.extract 0 middle, .empty, bytes.extract middle bytes.size, .empty]
+          else if mode == "gather-limit" then
+            let mut rejected := false
+            try socket.sendv (Array.replicate 65 block) catch _ => rejected := true
+            unless rejected do throw (IO.userError "gather count limit not enforced")
+            socket.sendv #[]
+            socket.sendv #[.empty]
+            socket.sendv #["bounded".toUTF8]
+            socket.shutdown
+          else if mode == "large" || mode == "gather-large" then
+            if mode == "gather-large" then
+              for _ in [:16] do socket.sendv #[.empty, block, block, .empty, block, block]
+            else
+              for _ in [:64] do socket.send block
             let queued ← socket.queuedBytes
             unless queued > 0 do throw (IO.userError "test did not exercise queued writes")
             socket.send "END".toUTF8

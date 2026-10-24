@@ -1,11 +1,11 @@
 {
-  "seed": 4354989789608708817,
+  "seed": 12728349492318815631,
   "passed": true,
   "cases": [
     {
       "command": [
         "uv_http",
-        "39407",
+        "34815",
         "1"
       ],
       "checks": [
@@ -15,13 +15,13 @@
         "all 1 workers receive connections on the same port"
       ],
       "returncode": 0,
-      "stdout": "worker=0 accepted=236 reads=307 sends=386 bytes=42546 queued=0 errors=0 peer_disconnects=0 elapsed_ns=113180181\n",
+      "stdout": "worker=0 accepted=236 reads=307 sends=386 bytes=42546 queued=0 errors=0 peer_disconnects=0 elapsed_ns=109779186\n",
       "stderr": ""
     },
     {
       "command": [
         "uv_http",
-        "37657",
+        "35495",
         "4"
       ],
       "checks": [
@@ -31,91 +31,106 @@
         "all 4 workers receive connections on the same port"
       ],
       "returncode": 0,
-      "stdout": "worker=0 accepted=53 reads=69 sends=53 bytes=4684 queued=0 errors=0 peer_disconnects=0 elapsed_ns=109635086\nworker=1 accepted=64 reads=80 sends=64 bytes=5608 queued=0 errors=0 peer_disconnects=0 elapsed_ns=110525496\nworker=2 accepted=56 reads=74 sends=56 bytes=4964 queued=0 errors=0 peer_disconnects=0 elapsed_ns=111429985\nworker=3 accepted=63 reads=84 sends=213 bytes=27290 queued=0 errors=0 peer_disconnects=0 elapsed_ns=109934385\n",
+      "stdout": "worker=0 accepted=57 reads=74 sends=57 bytes=5041 queued=0 errors=0 peer_disconnects=0 elapsed_ns=109586480\nworker=1 accepted=60 reads=81 sends=60 bytes=5358 queued=0 errors=0 peer_disconnects=0 elapsed_ns=109289613\nworker=2 accepted=60 reads=73 sends=59 bytes=5168 queued=0 errors=0 peer_disconnects=0 elapsed_ns=109403951\nworker=3 accepted=59 reads=79 sends=210 bytes=26979 queued=0 errors=0 peer_disconnects=0 elapsed_ns=110496218\n",
       "stderr": ""
     },
     {
       "command": [
         "uv_test",
         "echo",
-        "42427",
+        "44687",
         "4",
-        "43915"
+        "58195"
       ],
       "checks": [
         "24 fresh binary echo streams; half-close preserves final bytes"
       ],
       "returncode": 0,
-      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=3 sends=14 queued=0 errors=0\naccepted=7 sends=17 queued=0 errors=0\naccepted=7 sends=39 queued=0 errors=0\naccepted=8 sends=35 queued=0 errors=0\n",
+      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=8 sends=31 queued=0 errors=0\naccepted=5 sends=19 queued=0 errors=0\naccepted=3 sends=11 queued=0 errors=0\naccepted=9 sends=36 queued=0 errors=0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "uv_test",
+        "gather",
+        "59425",
+        "4",
+        "45117"
+      ],
+      "checks": [
+        "24 fresh binary echo streams; half-close preserves final bytes"
+      ],
+      "returncode": 0,
+      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=8 sends=52 queued=0 errors=0\naccepted=9 sends=44 queued=0 errors=0\naccepted=3 sends=9 queued=0 errors=0\naccepted=5 sends=29 queued=0 errors=0\n",
       "stderr": ""
     },
     {
       "command": [
         "uv_test",
         "pause",
-        "59009",
+        "49583",
         "4",
-        "60865"
+        "50727"
       ],
       "checks": [
         "24 fresh binary echo streams; half-close preserves final bytes"
       ],
       "returncode": 0,
-      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=5 sends=27 queued=0 errors=0\naccepted=7 sends=21 queued=0 errors=0\naccepted=5 sends=27 queued=0 errors=0\naccepted=8 sends=35 queued=0 errors=0\n",
+      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=6 sends=35 queued=0 errors=0\naccepted=6 sends=18 queued=0 errors=0\naccepted=4 sends=18 queued=0 errors=0\naccepted=9 sends=39 queued=0 errors=0\n",
       "stderr": ""
     },
     {
       "command": [
         "uv_test",
         "ipv6",
-        "33185",
+        "39473",
         "4",
-        "57025"
+        "47943"
       ],
       "checks": [
         "24 fresh binary echo streams; half-close preserves final bytes"
       ],
       "returncode": 0,
-      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=8 sends=35 queued=0 errors=0\naccepted=3 sends=16 queued=0 errors=0\naccepted=10 sends=54 queued=0 errors=0\naccepted=4 sends=12 queued=0 errors=0\n",
+      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=6 sends=35 queued=0 errors=0\naccepted=4 sends=10 queued=0 errors=0\naccepted=7 sends=24 queued=0 errors=0\naccepted=8 sends=33 queued=0 errors=0\n",
       "stderr": ""
     },
     {
       "command": [
         "uv_test",
         "restart",
-        "51421",
+        "46001",
         "1",
-        "55899"
+        "39913"
       ],
       "checks": [
         "24 fresh binary echo streams; half-close preserves final bytes"
       ],
       "returncode": 0,
-      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=25 sends=111 queued=0 errors=0\n",
+      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=25 sends=87 queued=0 errors=0\n",
       "stderr": ""
     },
     {
       "command": [
         "uv_test",
         "retained",
-        "38229",
+        "36433",
         "1",
-        "42443"
+        "38135"
       ],
       "checks": [
         "24 fresh binary echo streams; half-close preserves final bytes"
       ],
       "returncode": 0,
-      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nretained-safe\naccepted=25 sends=105 queued=0 errors=0\n",
+      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nretained-safe\naccepted=25 sends=119 queued=0 errors=0\n",
       "stderr": ""
     },
     {
       "command": [
         "uv_test",
         "affinity",
-        "60691",
+        "36775",
         "1",
-        "53303"
+        "37565"
       ],
       "checks": [
         "affinity"
@@ -128,9 +143,9 @@
       "command": [
         "uv_test",
         "overflow",
-        "47263",
+        "53589",
         "1",
-        "48249"
+        "57295"
       ],
       "checks": [
         "overflow"
@@ -142,10 +157,25 @@
     {
       "command": [
         "uv_test",
-        "stop",
-        "42551",
+        "gather-limit",
+        "52947",
         "1",
-        "56949"
+        "55761"
+      ],
+      "checks": [
+        "gather-limit"
+      ],
+      "returncode": 0,
+      "stdout": "closed\nclosed\naccepted=2 sends=1 queued=0 errors=0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "uv_test",
+        "stop",
+        "33019",
+        "1",
+        "54553"
       ],
       "checks": [
         "stop"
@@ -158,9 +188,9 @@
       "command": [
         "uv_test",
         "throw",
-        "42997",
+        "36317",
         "1",
-        "56013"
+        "32847"
       ],
       "checks": [
         "callback failure closes connection and preserves server"
@@ -173,9 +203,9 @@
       "command": [
         "uv_test",
         "setup-error",
-        "58493",
+        "55871",
         "1",
-        "33857"
+        "60033"
       ],
       "checks": [
         "callback failure closes connection and preserves server"
@@ -188,9 +218,9 @@
       "command": [
         "uv_test",
         "large",
-        "59225",
+        "59539",
         "1",
-        "54007"
+        "48831"
       ],
       "checks": [
         "16 MiB partial/queued writes, slow reader, write order, drain before close"
@@ -202,10 +232,40 @@
     {
       "command": [
         "uv_test",
-        "pressure",
-        "50767",
+        "gather-large",
+        "54899",
         "1",
-        "46251"
+        "39943"
+      ],
+      "checks": [
+        "16 MiB partial/queued writes, slow reader, write order, drain before close"
+      ],
+      "returncode": 0,
+      "stdout": "closed\nclosed\naccepted=2 sends=17 queued=15 errors=0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "uv_test",
+        "wake",
+        "36713",
+        "4",
+        "47753"
+      ],
+      "checks": [
+        "32 deferred owner-thread wakeups; paused reads, gather reply, half-close"
+      ],
+      "returncode": 0,
+      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=5 sends=4 queued=0 errors=0\naccepted=8 sends=8 queued=0 errors=0\naccepted=10 sends=10 queued=0 errors=0\naccepted=10 sends=10 queued=0 errors=0\n",
+      "stderr": ""
+    },
+    {
+      "command": [
+        "uv_test",
+        "pressure",
+        "41927",
+        "1",
+        "48671"
       ],
       "checks": [
         "automatic read pause/resume protects 1 MiB queue under 16 MiB output pressure"
@@ -218,9 +278,9 @@
       "command": [
         "uv_test",
         "idle",
-        "43559",
+        "33149",
         "1",
-        "53199"
+        "55917"
       ],
       "checks": [
         "idle connection reclaimed"
@@ -233,15 +293,15 @@
       "command": [
         "uv_test",
         "echo",
-        "58613",
+        "43149",
         "4",
-        "34935"
+        "56443"
       ],
       "checks": [
         "100 peer resets; server remains usable"
       ],
       "returncode": 0,
-      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=29 sends=12 queued=0 errors=17\naccepted=24 sends=6 queued=0 errors=17\naccepted=22 sends=9 queued=0 errors=13\naccepted=27 sends=15 queued=0 errors=12\n",
+      "stdout": "closed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\nclosed\naccepted=27 sends=10 queued=0 errors=17\naccepted=19 sends=5 queued=0 errors=14\naccepted=27 sends=4 queued=0 errors=22\naccepted=29 sends=14 queued=0 errors=15\n",
       "stderr": ""
     },
     {
@@ -252,7 +312,7 @@
     }
   ],
   "binary_sha256": {
-    "uv_http": "f51cf48085cb2ca7f56b086fd0d1a1053050d094f19b3668bfbaa262f69ca323",
-    "uv_test": "76ce8b963a8042ab798b69e6548844c947ed2211ce3f39c762d8bf0dab95c2e7"
+    "uv_http": "d5d486cddfd52740127602c7c4267e0caa2fd4d26722e3a8c26e636938adeeb6",
+    "uv_test": "2560d2af8bf0c8aa8231d5e43308486c28e20f72ca8ff7b0ec94478d55db6acd"
   }
 }

@@ -18,6 +18,15 @@ Success means accepted/queued, not acknowledged by the peer. Throws if the bound
 write queue would overflow. Partial writes are handled internally. -/
 @[extern "leanuv_send"] opaque send (socket : @& Socket) (bytes : ByteArray) : IO Unit
 
+/-- Submit up to 64 buffers as one ordered gather write, without copying payloads.
+The sum of buffer sizes is subject to the same retained-write limit as `send`. -/
+@[extern "leanuv_sendv"] opaque sendv (socket : @& Socket) (buffers : Array ByteArray) : IO Unit
+
+/-- Enable/disable `onWake` on the owning worker. Enabled callbacks run about every
+10 ms and after the write queue drains. Use this to poll a promise without socket
+operations from a foreign thread. Disable when no continuation is pending. -/
+@[extern "leanuv_set_wakeup"] opaque setWakeup (socket : @& Socket) (enabled : Bool) : IO Unit
+
 /-- Abort the connection, cancelling pending writes. Idempotent on the owner thread. -/
 @[extern "leanuv_close"] opaque close (socket : @& Socket) : IO Unit
 
@@ -46,6 +55,9 @@ structure Callbacks where
   /-- Runs exactly once after an accepted connection closes, if setup succeeded.
   Called on the owner thread, after pending writes complete or are cancelled. -/
   onClose : IO Unit := pure ()
+  /-- Owner-thread continuation, enabled explicitly by `Socket.setWakeup`.
+  May send, pause/resume reads, or disable itself. Never runs after close. -/
+  onWake : IO Unit := pure ()
 
 abbrev Worker := Socket → IO Callbacks
 

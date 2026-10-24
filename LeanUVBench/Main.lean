@@ -1,5 +1,5 @@
 import LeanUV
-import Bench.Protocol
+import LeanUVBench.Protocol
 
 private def number (args : List String) (i : Nat) (default : Nat) : IO Nat :=
   match args[i]? with

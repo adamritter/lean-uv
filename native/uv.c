@@ -44,7 +44,7 @@ struct worker {
     uv_timer_t timer;
     uv_signal_t sigint, sigterm;
     lean_object *on_connect;
-    uint32_t id, active;
+    uint32_t id, active, waking;
     int loop_ready;
     uint64_t started, last_sweep;
     uint64_t accepted, reads, received, sends, sent, queued, errors, disconnects, elapsed;
@@ -59,7 +59,7 @@ struct connection {
     atomic_bool closed;
     lean_object *callbacks, *read_buffer;
     uint64_t retained, last_active;
-    int closing, draining, paused, pressure;
+    int closing, draining, paused, pressure, wakeup;
 };
 
 typedef struct {
@@ -131,6 +131,7 @@ static void on_closed(uv_handle_t *h) {
 static void close_connection(connection *c) {
     if (!c->closing) {
         c->closing = 1;
+        if (c->wakeup) { c->wakeup = 0; c->worker->waking--; }
         uv_read_stop((uv_stream_t *)&c->tcp);
         uv_close((uv_handle_t *)&c->tcp, on_closed);
     }
@@ -156,6 +157,14 @@ static int start_read(connection *c) {
     return rc == UV_EALREADY ? 0 : rc;
 }
 
+static void wake_connection(connection *c) {
+    if (!c->closing && !c->draining && c->wakeup && c->callbacks) {
+        lean_object *action = lean_ctor_get(c->callbacks, 2);
+        lean_inc(action);
+        callback_result(c, lean_apply_1(action, lean_box(0)));
+    }
+}
+
 static void on_written(uv_write_t *req, int status) {
     write_request *w = (write_request *)req;
     connection *c = req->handle->data;
@@ -170,49 +179,53 @@ static void on_written(uv_write_t *req, int status) {
         int rc = start_read(c);
         if (rc < 0) { c->worker->errors++; close_connection(c); }
     }
+    if (status == 0 && c->retained == 0) wake_connection(c);
 }
 
-LEAN_EXPORT lean_obj_res leanuv_send(b_lean_obj_arg socket, lean_obj_arg bytes) {
+/* owner retains every buffer until the asynchronous write callback. libuv
+   copies the uv_buf_t descriptors; the bytes themselves are never copied. */
+static lean_object *send_buffers(b_lean_obj_arg socket, lean_object *owner,
+        uv_buf_t *buffers, unsigned count, uint64_t len) {
     connection *c = NULL;
     int rc = get_connection(socket, &c);
-    if (rc < 0) { lean_dec(bytes); return error(rc); }
-    if (c->closing || c->draining) { lean_dec(bytes); return error(UV_EPIPE); }
-    size_t len = lean_sarray_size(bytes);
-    if (!len) { lean_dec(bytes); return ok(); }
+    if (rc < 0) { lean_dec(owner); return error(rc); }
+    if (c->closing || c->draining) { lean_dec(owner); return error(UV_EPIPE); }
+    if (!len) { lean_dec(owner); return ok(); }
     uint64_t limit = c->worker->server->max_queued;
-    if (len > UINT_MAX || len > limit || c->retained > limit - len) {
-        lean_dec(bytes);
-        return error(UV_ENOBUFS);
+    if (len > INT_MAX || len > limit || c->retained > limit - len) {
+        lean_dec(owner); return error(UV_ENOBUFS);
     }
-    uv_buf_t buf = uv_buf_init((char *)lean_sarray_cptr(bytes), (unsigned)len);
     size_t offset = 0;
     if (!c->tcp.write_queue_size) {
-        rc = uv_try_write((uv_stream_t *)&c->tcp, &buf, 1);
+        rc = uv_try_write((uv_stream_t *)&c->tcp, buffers, count);
         if (rc == (int64_t)len) {
             c->worker->sends++;
             c->worker->sent += len;
-            lean_dec(bytes);
+            lean_dec(owner);
             return ok();
         }
         if (rc < 0 && rc != UV_EAGAIN && rc != UV_ENOSYS) {
-            lean_dec(bytes); close_connection(c); return error(rc);
+            lean_dec(owner); close_connection(c); return error(rc);
         }
         if (rc > 0) offset = (size_t)rc;
     }
+    while (count && offset >= buffers[0].len) {
+        offset -= buffers[0].len;
+        buffers++;
+        count--;
+    }
+    if (count) { buffers[0].base += offset; buffers[0].len -= offset; }
     write_request *w = malloc(sizeof(*w));
     if (!w) {
-        lean_dec(bytes);
-        /* A prefix may already be on the wire: do not permit a retry. */
-        close_connection(c);
+        lean_dec(owner);
+        close_connection(c); /* a prefix may already be on the wire */
         return error(UV_ENOMEM);
     }
-    w->bytes = bytes;
-    w->size = len;
-    buf.base += offset;
-    buf.len -= offset;
-    rc = uv_write(&w->req, (uv_stream_t *)&c->tcp, &buf, 1, on_written);
+    w->bytes = owner;
+    w->size = (size_t)len;
+    rc = uv_write(&w->req, (uv_stream_t *)&c->tcp, buffers, count, on_written);
     if (rc < 0) {
-        lean_dec(bytes); free(w); close_connection(c); return error(rc);
+        lean_dec(owner); free(w); close_connection(c); return error(rc);
     }
     c->retained += len;
     c->worker->queued++;
@@ -222,6 +235,38 @@ LEAN_EXPORT lean_obj_res leanuv_send(b_lean_obj_arg socket, lean_obj_arg bytes) 
         c->pressure = 1;
         uv_read_stop((uv_stream_t *)&c->tcp);
     }
+    return ok();
+}
+
+LEAN_EXPORT lean_obj_res leanuv_send(b_lean_obj_arg socket, lean_obj_arg bytes) {
+    size_t len = lean_sarray_size(bytes);
+    if (len > INT_MAX) { lean_dec(bytes); return error(UV_ENOBUFS); }
+    uv_buf_t buf = uv_buf_init((char *)lean_sarray_cptr(bytes), (unsigned)len);
+    return send_buffers(socket, bytes, &buf, 1, len);
+}
+
+LEAN_EXPORT lean_obj_res leanuv_sendv(b_lean_obj_arg socket, lean_obj_arg array) {
+    size_t count = lean_array_size(array);
+    if (count > 64) { lean_dec(array); return error(UV_EINVAL); }
+    uv_buf_t buffers[64];
+    uint64_t total = 0;
+    for (size_t i = 0; i < count; i++) {
+        lean_object *bytes = lean_array_get_core(array, i);
+        size_t n = lean_sarray_size(bytes);
+        if (n > INT_MAX) { lean_dec(array); return error(UV_ENOBUFS); }
+        total += n;
+        buffers[i] = uv_buf_init((char *)lean_sarray_cptr(bytes), (unsigned)n);
+    }
+    return send_buffers(socket, array, buffers, (unsigned)count, total);
+}
+
+LEAN_EXPORT lean_obj_res leanuv_set_wakeup(b_lean_obj_arg socket, uint8_t enabled) {
+    connection *c = NULL;
+    int rc = get_connection(socket, &c);
+    if (rc < 0) return error(rc);
+    if (c->closing || c->draining) return error(UV_EPIPE);
+    if (enabled && !c->wakeup) { c->wakeup = 1; c->worker->waking++; }
+    if (!enabled && c->wakeup) { c->wakeup = 0; c->worker->waking--; }
     return ok();
 }
 
@@ -343,11 +388,18 @@ static void idle_walk(uv_handle_t *h, void *arg) {
     if (uv_now(&w->loop) - c->last_active >= w->server->idle_ms) close_connection(c);
 }
 
+static void wake_walk(uv_handle_t *h, void *arg) {
+    worker *w = arg;
+    if (h->type == UV_TCP && h != (uv_handle_t *)&w->listener && !uv_is_closing(h))
+        wake_connection(h->data);
+}
+
 static void on_tick(uv_timer_t *timer) {
     worker *w = timer->data;
     if (w->server->run_ms && (uv_hrtime() - w->started) / 1000000 >= w->server->run_ms)
         atomic_store(&w->server->stop, true);
     if (atomic_load(&w->server->stop)) { uv_walk(&w->loop, close_walk, w); return; }
+    if (w->waking) uv_walk(&w->loop, wake_walk, w);
     uint64_t now = uv_now(&w->loop);
     if (w->server->idle_ms && now - w->last_sweep >= 1000) {
         w->last_sweep = now;

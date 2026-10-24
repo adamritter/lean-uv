@@ -159,7 +159,7 @@ def check_http():
 
 
 def check_transport():
-    for mode in ("echo", "pause", "ipv6", "restart", "retained"):
+    for mode in ("echo", "gather", "pause", "ipv6", "restart", "retained"):
         with server("test", mode, 1 if mode in ("retained", "restart") else 4) as (address, record):
             payloads = [RNG.randbytes(RNG.randint(1, 65536)) for _ in range(24)]
             def echo(data):
@@ -173,7 +173,7 @@ def check_transport():
         assert "errors=0" in record["stdout"], record
         if mode == "retained":
             assert "retained-safe" in record["stdout"], record
-    for mode, expected in (("affinity", b"guarded"), ("overflow", b"bounded"), ("stop", b"bye")):
+    for mode, expected in (("affinity", b"guarded"), ("overflow", b"bounded"), ("gather-limit", b"bounded"), ("stop", b"bye")):
         with server("test", mode, 1) as (address, record):
             with socket.create_connection(address, 5) as s:
                 s.sendall(b"test")
@@ -188,17 +188,28 @@ def check_transport():
                 assert s.recv(1) == b""
             record["checks"].append("callback failure closes connection and preserves server")
         assert re.search(r"errors=[1-9]", record["stdout"]), record
-    with server("test", "large", 1) as (address, record):
-        with socket.socket() as s:
-            s.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 32768)
-            s.settimeout(15)
-            s.connect(address)
-            s.sendall(b"go")
-            time.sleep(.2)
-            data = read_all(s)
-            assert data == b"z" * (16 * 1024 * 1024) + b"END", len(data)
-        record["checks"].append("16 MiB partial/queued writes, slow reader, write order, drain before close")
-    assert re.search(r"queued=[1-9]", record["stdout"]), record
+    for mode in ("large", "gather-large"):
+        with server("test", mode, 1) as (address, record):
+            with socket.socket() as s:
+                s.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 32768)
+                s.settimeout(15)
+                s.connect(address)
+                s.sendall(b"go")
+                time.sleep(.2)
+                data = read_all(s)
+                assert data == b"z" * (16 * 1024 * 1024) + b"END", len(data)
+            record["checks"].append("16 MiB partial/queued writes, slow reader, write order, drain before close")
+        assert re.search(r"queued=[1-9]", record["stdout"]), record
+    with server("test", "wake", 4) as (address, record):
+        def wake(data):
+            with socket.create_connection(address, 5) as sock:
+                sock.sendall(data)
+                sock.shutdown(socket.SHUT_WR)
+                assert read_all(sock) == b"wake:" + data
+        with concurrent.futures.ThreadPoolExecutor(8) as pool:
+            list(pool.map(wake, [RNG.randbytes(100) for _ in range(32)]))
+        record["checks"].append("32 deferred owner-thread wakeups; paused reads, gather reply, half-close")
+    assert "errors=0" in record["stdout"], record
     with server("test", "pressure", 1) as (address, record):
         with socket.socket() as s:
             s.setsockopt(socket.SOL_SOCKET, socket.SO_RCVBUF, 32768)

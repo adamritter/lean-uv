@@ -1,5 +1,5 @@
 import Std.Internal.UV.TCP
-import Bench.Protocol
+import LeanUVBench.Protocol
 
 /-! Same HTTP code over the original global-loop/promise transport. Continuation
 tasks keep idle connections from occupying a thread per connection. -/

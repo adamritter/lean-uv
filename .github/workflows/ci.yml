@@ -5,6 +5,11 @@ on:
 
 jobs:
   linux:
+    strategy:
+      matrix:
+        lean: [v4.26.0, v4.35.0]
+    env:
+      ELAN_TOOLCHAIN: leanprover/lean4:${{ matrix.lean }}
     runs-on: ubuntu-24.04
     timeout-minutes: 15
     steps:
@@ -24,7 +29,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: validation
+          name: validation-${{ matrix.lean }}
           path: |
             results/validation.json
             results/sanitizer.json

@@ -23,9 +23,9 @@ def main():
     run(["cc", "-O1", "-g", "-fno-omit-frame-pointer", "-fsanitize=address,undefined",
          "-std=c11", "-pthread", "-I", prefix/"include", "-c", "native/uv.c", "-o", obj])
     for exe, modules in {
-        "uv_http": ["Bench/Main", "Bench/Protocol", "LeanUV/TCP", "LeanUV"],
-        "uv_test": ["Tests/Server", "LeanUV/TCP", "LeanUV"],
-        "baseline": ["Tests/SanitizerBaseline"],
+        "uv_http": ["LeanUVBench/Main", "LeanUVBench/Protocol", "LeanUV/TCP", "LeanUV"],
+        "uv_test": ["LeanUVTests/Server", "LeanUV/TCP", "LeanUV"],
+        "baseline": ["LeanUVTests/SanitizerBaseline"],
     }.items():
         objects = [ROOT / f".lake/build/ir/{module}.c.o.export" for module in modules]
         # Let system GCC supply its shared unwinder. Lean's static libunwind

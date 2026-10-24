@@ -74,7 +74,7 @@ def main : IO Unit := do
 `Socket → IO Callbacks` connection handler. The outer factory executes once per
 worker; create that worker's mutable state and response buffers inside it.
 The inner handler executes once per connection and returns `onData` and optional
-`onClose` callbacks. [The HTTP example](Bench/Main.lean) maintains a separate
+`onClose` callbacks. [The HTTP example](LeanUVBench/Main.lean) maintains a separate
 incremental Lean parser in an `IO.Ref` for every connection and computes the
 response in Lean. The C binding contains no HTTP parser or canned responses.
 
@@ -83,6 +83,8 @@ The callback contract is explicit:
 | Operation | Meaning |
 |---|---|
 | `Socket.send : Socket → ByteArray → IO Unit` | Accept bytes in order; retain the buffer until the write completes. Success means submitted, not peer-acknowledged. |
+| `Socket.sendv` | Up to 64 buffers in a single gather write; payloads stay shared, including across partial writes. |
+| `Socket.setWakeup` | Enable `Callbacks.onWake` on the owning worker while a continuation is pending. |
 | `Socket.shutdown` | Stop receiving, drain queued writes, then shut down and close. |
 | `Socket.close` | Abort; pending writes may be cancelled. Idempotent on the owner thread. |
 | `Socket.pause` / `resume` | Control incoming reads; automatic backpressure can still pause them. |
@@ -143,7 +145,7 @@ Three server implementations are included:
 | `native_http` | Pure C/libuv delimiter-only handler. Less parsing work; a transport throughput control, not an equivalent HTTP implementation. |
 
 All three link the same libuv archive shipped with the pinned Lean toolchain.
-The two Lean variants share [Bench/Protocol.lean](Bench/Protocol.lean).
+The two Lean variants share [LeanUVBench/Protocol.lean](LeanUVBench/Protocol.lean).
 `std_http` uses one global I/O loop plus `LEAN_NUM_THREADS=N` task threads,
 restricted to N CPUs; it does not acquire N independent I/O loops. The new
 server uses N pinned I/O workers and sets the unused Lean task-pool size to 1.
@@ -182,7 +184,7 @@ run instruments this package's C FFI with AddressSanitizer and UBSan. The shippe
 Lean runtime and its allocator are not rebuilt with instrumentation, so this is
 not a proof that every Lean allocation is leak-free. Leak detection stays enabled;
 only Lean `Init` startup allocations are suppressed, after reproducing them in
-the no-I/O [baseline](Tests/SanitizerBaseline.lean). The unsuppressed baseline
+the no-I/O [baseline](LeanUVTests/SanitizerBaseline.lean). The unsuppressed baseline
 report and the exact [suppression](scripts/lsan.supp) are preserved.
 The sanitizer uses DWARF malloc-stack unwinding so the same narrowly scoped
 suppression also works with x86_64 runtime libraries that omit frame pointers.
@@ -196,3 +198,16 @@ Upstream references: [libuv loop/thread design](https://docs.libuv.org/en/v1.x/d
 
 MIT licensed. The initial supported surface is intentionally small; performance
 results describe the included workload and hardware, not a portable minimum rate.
+
+Gather writes and worker continuations (0.2): `onWake` runs approximately every
+10 ms while explicitly enabled, and when the output queue drains. Disable it when
+the continuation finishes. This supports polling promises completed elsewhere
+while all socket access remains on the owning worker. No wakeups occur after
+closure. The fast path does not scan connections when no wakeup is enabled.
+Both send APIs enforce the same queue budget and preserve write order.
+
+The example/test module names are prefixed `LeanUVBench` and `LeanUVTests`, so a
+downstream package can have its own `Bench` and `Tests` libraries without a Lake
+module-resolution collision. [Gather/wakeup regressions](results/gather-wakeup-validation.json)
+and the ASan/UBSan suite cover empty gathers, count limits, 16 MiB partial writes,
+and 32 asynchronous completions with half-closed clients.
