@@ -1,0 +1,33 @@
+{
+  "result": "PASS",
+  "diagnostic_negative_control": true,
+  "seed": 15796281116700646141,
+  "binary_sha256": "1ca5693b224539340e15d30becffdc719dd658c6adb485ab571699e14821d264",
+  "source_sha256": "a425dc87223363749d97efdd14d4de36fa95589243743fc2203565e17b2878dc",
+  "runs": [
+    {
+      "mode": "finalize-control",
+      "connections": 2,
+      "bytes_verified": 0,
+      "resources_released": 0,
+      "accepted_by_worker": [
+        0,
+        2,
+        0,
+        0
+      ],
+      "release_calls_by_worker": [
+        0,
+        1,
+        0,
+        0
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

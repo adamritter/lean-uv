@@ -1,0 +1,153 @@
+{
+  "result": "PASS",
+  "diagnostic_negative_control": false,
+  "seed": 9579029341380327984,
+  "binary_sha256": "620d92d1a57f515f6c8775b05c129cc4ba281e1503e4686963f2e93e7d671171",
+  "source_sha256": "a425dc87223363749d97efdd14d4de36fa95589243743fc2203565e17b2878dc",
+  "runs": [
+    {
+      "mode": "echo",
+      "connections": 34,
+      "bytes_verified": 2729190,
+      "resources_released": 0,
+      "accepted_by_worker": [
+        6,
+        6,
+        12,
+        10
+      ],
+      "release_calls_by_worker": [
+        6,
+        6,
+        12,
+        10
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "delay",
+      "connections": 33,
+      "bytes_verified": 712483,
+      "resources_released": 0,
+      "accepted_by_worker": [
+        6,
+        9,
+        9,
+        9
+      ],
+      "release_calls_by_worker": [
+        6,
+        9,
+        9,
+        9
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "gather",
+      "connections": 34,
+      "bytes_verified": 2894934,
+      "resources_released": 0,
+      "accepted_by_worker": [
+        9,
+        10,
+        6,
+        9
+      ],
+      "release_calls_by_worker": [
+        9,
+        10,
+        6,
+        9
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "fail",
+      "connections": 34,
+      "bytes_verified": 0,
+      "resources_released": 0,
+      "accepted_by_worker": [
+        8,
+        8,
+        9,
+        9
+      ],
+      "release_calls_by_worker": [
+        8,
+        8,
+        9,
+        9
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "fuel",
+      "connections": 2,
+      "bytes_verified": 0,
+      "resources_released": 255,
+      "accepted_by_worker": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "release_calls_by_worker": [
+        0,
+        1,
+        1,
+        0
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "finalize",
+      "connections": 2,
+      "bytes_verified": 0,
+      "resources_released": 255,
+      "accepted_by_worker": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "release_calls_by_worker": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ]
+}

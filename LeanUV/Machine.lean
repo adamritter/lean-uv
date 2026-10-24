@@ -17,6 +17,7 @@ inductive MachineCommand (Work : Type) where
   | idle
   | write (buffers : Array ByteArray)
   | perform (work : Work)
+  | finalize (work : Work)
   | shutdown
   | abort
 
@@ -59,13 +60,13 @@ except that failure or closure can interrupt every pending operation. -/
 def permitted (command : MachineCommand Work) (event : MachineEvent Reply) : Prop :=
   match command, event with
   | _, .failed | _, .closed => True
-  | .idle, .data _ | .write _, .written | .perform _, .result _ => True
+  | .idle, .data _ | .write _, .written | .perform _, .result _ | .finalize _, .result _ => True
   | _, _ => False
 
 def effectMatches (relation : Work → Reply → Prop) (command : MachineCommand Work)
     (event : MachineEvent Reply) : Prop :=
   match command, event with
-  | .perform work, .result reply => relation work reply
+  | .perform work, .result reply | .finalize work, .result reply => relation work reply
   | _, _ => True
 
 /-- Causal ordering, including the association between a work item and its reply.
@@ -190,6 +191,13 @@ mutual
         c.socket.sendv buffers
         afterWrite c done
     | .perform work => invoke c work fuel
+    | .finalize work =>
+      -- Cleanup cannot be parked behind a cooperative yield: onClose cancels
+      -- pending work. Run this one-shot effect and adopt its reply immediately.
+      -- Unlike polling work, a finalizer must return some reply synchronously.
+      match ← c.effect work with
+      | none => dispatch c .failed (max 1 fuel)
+      | some reply => dispatch c (.result reply) (max 1 fuel)
     | .shutdown =>
       c.pending.set none
       c.closed.set true
@@ -203,7 +211,9 @@ end
 /-- Install a pure per-socket machine on the native owner thread. A work handler
 returns `none` only while the same job needs polling; once it returns `some`, the
 result is delivered exactly once. One-shot work must remember its own initiation
-or return its promise as a reply and use a distinct polling job. -/
+or return its promise as a reply and use a distinct polling job. `finalize` is
+reserved for prompt one-shot work returning `some`; it never yields before the
+work or between its completion and adoption of its reply. -/
 def callbacks (socket : Socket) (machine : Machine State Reply Work)
     (effect : Work → IO (Option Reply)) (maxQueuedBytes : UInt64) : IO Callbacks := do
   let c : Connection State Reply Work := {

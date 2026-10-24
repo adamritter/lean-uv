@@ -24,14 +24,19 @@ def reactor (mode : String) : Machine State Reply Work := {
     if state.closed then (state, .idle)
     else match event with
       | .data bytes =>
-        (state, .perform (if mode == "fuel" then .acquire 10000 bytes else .begin bytes))
+        (state, .perform (if mode == "fuel" then .acquire 10000 bytes
+          else if mode == "finalize" || mode == "finalize-control" then .acquire 254 bytes else .begin bytes))
       | .result (.waiting deadline bytes) => (state, .perform (.poll deadline bytes))
       | .result (.bytes bytes) =>
         (state, .write (if mode == "gather" then Array.replicate 65 .empty |>.push bytes else #[bytes]))
       | .result (.acquired remaining bytes) =>
-        ({ state with owned := state.owned + 1 },
+        if remaining == 0 && (mode == "finalize" || mode == "finalize-control") then
+          ({ closed := true, owned := state.owned + 1 },
+            if mode == "finalize" then .finalize (.release (state.owned + 1))
+            else .perform (.release (state.owned + 1)))
+        else ({ state with owned := state.owned + 1 },
           if remaining == 0 then .write #[bytes] else .perform (.acquire (remaining - 1) bytes))
-      | .closed => ({ state with closed := true }, .perform (.release state.owned))
+      | .closed => ({ state with closed := true }, .finalize (.release state.owned))
       | .failed => (state, .abort)
       | _ => (state, .idle) }
 
@@ -56,6 +61,7 @@ def main (args : List String) : IO Unit := do
           if (← acquired.get) == 255 then
             IO.println "yield-ready"
             (← IO.getStdout).flush
+            if mode == "finalize" || mode == "finalize-control" then IO.sleep 100
           return some (.acquired remaining bytes)
         | .release owned =>
           IO.println s!"released {worker} owned {owned} acquired {← acquired.get}"

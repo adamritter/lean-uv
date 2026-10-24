@@ -1,25 +1,26 @@
 {
   "result": "PASS",
-  "seed": 7724613543344821781,
-  "binary_sha256": "839de052bb32ddb7c1e5dd39d60dc9023dd0ffa23cfcae52fbd3c0526bc5e07c",
-  "source_sha256": "baddfe1fd4fdd65d13afcbb977b2cd707c706da7a7576ca7c9e0454eca49a9ce",
+  "diagnostic_negative_control": false,
+  "seed": 9579029341380327984,
+  "binary_sha256": "620d92d1a57f515f6c8775b05c129cc4ba281e1503e4686963f2e93e7d671171",
+  "source_sha256": "a425dc87223363749d97efdd14d4de36fa95589243743fc2203565e17b2878dc",
   "runs": [
     {
       "mode": "echo",
       "connections": 34,
-      "bytes_verified": 2925736,
+      "bytes_verified": 2729190,
       "resources_released": 0,
       "accepted_by_worker": [
-        9,
-        11,
-        8,
-        6
+        6,
+        6,
+        12,
+        10
       ],
       "release_calls_by_worker": [
-        9,
-        11,
-        8,
-        6
+        6,
+        6,
+        12,
+        10
       ],
       "errors": [
         0,
@@ -31,19 +32,19 @@
     {
       "mode": "delay",
       "connections": 33,
-      "bytes_verified": 823528,
+      "bytes_verified": 712483,
       "resources_released": 0,
       "accepted_by_worker": [
-        11,
         6,
-        6,
-        10
+        9,
+        9,
+        9
       ],
       "release_calls_by_worker": [
-        11,
         6,
-        6,
-        10
+        9,
+        9,
+        9
       ],
       "errors": [
         0,
@@ -55,19 +56,19 @@
     {
       "mode": "gather",
       "connections": 34,
-      "bytes_verified": 2801380,
+      "bytes_verified": 2894934,
       "resources_released": 0,
       "accepted_by_worker": [
-        13,
-        7,
-        12,
-        2
+        9,
+        10,
+        6,
+        9
       ],
       "release_calls_by_worker": [
-        13,
-        7,
-        12,
-        2
+        9,
+        10,
+        6,
+        9
       ],
       "errors": [
         0,
@@ -82,16 +83,16 @@
       "bytes_verified": 0,
       "resources_released": 0,
       "accepted_by_worker": [
+        8,
+        8,
         9,
-        11,
-        4,
-        10
+        9
       ],
       "release_calls_by_worker": [
+        8,
+        8,
         9,
-        11,
-        4,
-        10
+        9
       ],
       "errors": [
         0,
@@ -106,16 +107,40 @@
       "bytes_verified": 0,
       "resources_released": 255,
       "accepted_by_worker": [
-        1,
         0,
+        1,
         1,
         0
       ],
       "release_calls_by_worker": [
-        1,
         0,
         1,
+        1,
         0
+      ],
+      "errors": [
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "mode": "finalize",
+      "connections": 2,
+      "bytes_verified": 0,
+      "resources_released": 255,
+      "accepted_by_worker": [
+        0,
+        0,
+        1,
+        1
+      ],
+      "release_calls_by_worker": [
+        0,
+        0,
+        1,
+        1
       ],
       "errors": [
         0,

@@ -17,13 +17,14 @@ root = Path(__file__).resolve().parents[1]
 parser=argparse.ArgumentParser()
 parser.add_argument('--binary',type=Path,default=root/'.lake/build/bin/uv_machine_test')
 parser.add_argument('--output',type=Path,default=root/'results/machine-validation.json')
+parser.add_argument('--negative-control',action='store_true')
 args=parser.parse_args()
 binary=args.binary
 seed = int.from_bytes(os.urandom(8), 'big')
 rng = random.Random(seed)
 rows = []
 
-for mode in ['echo', 'delay', 'gather', 'fail', 'fuel']:
+for mode in (['finalize-control'] if args.negative_control else ['echo', 'delay', 'gather', 'fail', 'fuel', 'finalize']):
     with socket.socket() as s:
         s.bind(('127.0.0.1', 0)); port = s.getsockname()[1]
     proc = subprocess.Popen([str(binary), mode, str(port)], stdout=subprocess.PIPE,
@@ -38,7 +39,7 @@ for mode in ['echo', 'delay', 'gather', 'fail', 'fuel']:
                 assert proc.poll() is None, proc.communicate()
                 assert time.monotonic() < deadline, mode
                 time.sleep(.02)
-        if mode == 'fuel':
+        if mode in ('fuel','finalize','finalize-control'):
             # Abort while a long chain of one-shot effects is yielded. Every
             # acquired resource must already have been adopted by the pure state.
             client = socket.create_connection(('127.0.0.1',port),timeout=2)
@@ -102,14 +103,18 @@ for mode in ['echo', 'delay', 'gather', 'fail', 'fuel']:
         elif parts[0]=='worker':
             i=int(parts[1]);accepted[i]=int(parts[3]);errors[i]=int(parts[5])
         else: raise AssertionError(line)
-    assert released==accepted, (mode,released,accepted)
+    if mode == 'finalize-control':
+        assert sum(released) < sum(accepted), ('diagnostic did not detect parked cleanup',released,accepted)
+    else:
+        assert released==accepted, (mode,released,accepted)
     assert sum(errors)==0, (mode,errors)
-    if mode=='fuel':
+    if mode in ('fuel','finalize','finalize-control'):
         client.close()
-        assert 255 <= max(resources) < 10001, ('suspension was not exercised',resources)
+        if mode=='fuel': assert 255 <= max(resources) < 10001, ('suspension was not exercised',resources)
+        if mode=='finalize': assert max(resources)==255, ('finalizer boundary not exercised',resources)
     rows.append({'mode':mode,'connections':sum(accepted),'bytes_verified':sum(sizes),
         'resources_released':sum(resources),'accepted_by_worker':accepted,'release_calls_by_worker':released,'errors':errors})
-result={'result':'PASS','seed':seed,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),
+result={'result':'PASS','diagnostic_negative_control':args.negative_control,'seed':seed,'binary_sha256':hashlib.sha256(binary.read_bytes()).hexdigest(),
     'source_sha256':hashlib.sha256((root/'LeanUV/Machine.lean').read_bytes()).hexdigest(),'runs':rows}
 (root/'results').mkdir(exist_ok=True)
 args.output.parent.mkdir(parents=True,exist_ok=True)
