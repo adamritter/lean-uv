@@ -8,8 +8,9 @@ import subprocess
 
 root = Path(__file__).resolve().parents[1]
 source = root / 'LeanUV/Contract.lean'
+modules = [(source,'LeanUV.TCP.Contract.'),(root/'LeanUV/Machine.lean','LeanUV.TCP.Machine.')]
 audit = root / 'LeanUV/ContractAudit.lean'
-declared = {'LeanUV.TCP.Contract.' + name for name in re.findall(r'^theorem\s+(\w+)', source.read_text(), re.M)}
+declared = {prefix + name for path,prefix in modules for name in re.findall(r'^theorem\s+(\w+)',path.read_text(),re.M)}
 checked = set(re.findall(r'^#print axioms\s+(\S+)', audit.read_text(), re.M))
 assert declared == checked, (declared, checked)
 run = subprocess.run(['lake', 'env', 'lean', str(audit)], cwd=root, text=True, capture_output=True, check=True)
@@ -20,7 +21,7 @@ for name, _, deps in re.findall(r"'([^']+)' (does not depend on any axioms|depen
     rows[name] = sorted(axioms)
 assert set(rows) == declared, run.stdout
 print(json.dumps({'result':'PASS','lean':subprocess.check_output(['lean','--version'],text=True).strip(),
-    'contract_sha256':hashlib.sha256(source.read_bytes()).hexdigest(), 'axioms':rows,
-    'explicit_hypotheses':['NativeContract','ProgressContract'],
+    'source_sha256':{str(path.relative_to(root)):hashlib.sha256(path.read_bytes()).hexdigest() for path,_ in modules}, 'axioms':rows,
+    'explicit_hypotheses':['NativeContract','ProgressContract','Machine.ExecutionContract'],
     'native_implementation_proved':False,
     'http_correctness_assumed':False},indent=2))

@@ -32,3 +32,6 @@ lean_exe uv_test where
 
 lean_exe sanitizer_baseline where
   root := `LeanUVTests.SanitizerBaseline
+
+lean_exe uv_machine_test where
+  root := `LeanUVTests.Machine

@@ -24,6 +24,8 @@ jobs:
         run: bash scripts/build.sh
       - name: Audit native-contract proof dependencies
         run: python3 scripts/verify_contract.py
+      - name: Pure reactor socket regressions
+        run: python3 scripts/test_machine.py
       - name: Socket regressions
         run: python3 scripts/test.py
       - name: FFI memory and undefined-behavior checks

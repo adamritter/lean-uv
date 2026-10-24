@@ -1,0 +1,39 @@
+{
+  "result": "PASS",
+  "lean": "Lean (version 4.26.0, aarch64-unknown-linux-gnu, commit d8204c9fd894f91bbb2cdfec5912ec8196fd8562, Release)",
+  "source_sha256": {
+    "LeanUV/Contract.lean": "b4e3a5f27e30c3bba925ea9a0a065c4df3d4f5bdd6aabf05f835a76e88a37425",
+    "LeanUV/Machine.lean": "baddfe1fd4fdd65d13afcbb977b2cd707c706da7a7576ca7c9e0454eca49a9ce"
+  },
+  "axioms": {
+    "LeanUV.TCP.Contract.prefix_refl": [
+      "propext"
+    ],
+    "LeanUV.TCP.Contract.prefix_trans": [
+      "propext"
+    ],
+    "LeanUV.TCP.Contract.output_prefix": [],
+    "LeanUV.TCP.Contract.closed_write_released": [
+      "propext"
+    ],
+    "LeanUV.TCP.Contract.graceful_exact_output": [],
+    "LeanUV.TCP.Machine.replay_invariant": [],
+    "LeanUV.TCP.Machine.replay_length": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.scheduled_invariant": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.execution_invariant": [],
+    "LeanUV.TCP.Machine.execution_scheduled_invariant": [
+      "propext"
+    ]
+  },
+  "explicit_hypotheses": [
+    "NativeContract",
+    "ProgressContract",
+    "Machine.ExecutionContract"
+  ],
+  "native_implementation_proved": false,
+  "http_correctness_assumed": false
+}

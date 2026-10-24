@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 cd "$(dirname "$0")/.."
-lake build uv_http uv_echo std_http uv_test
+lake build uv_http uv_echo std_http uv_test uv_machine_test
 mkdir -p bin
 LEANUV_PREFIX="$(lean --print-prefix)"
 # Use the same libuv archive as Lake's Lean executable, not a different .so.

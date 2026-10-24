@@ -101,6 +101,18 @@ A failed native write can already have emitted a prefix; such a failure aborts
 the socket and must never be retried as a whole message. A write completion or
 graceful close does not assert that the peer application has consumed the bytes.
 
+For a protocol with a pure control machine, [LeanUV/Machine.lean](LeanUV/Machine.lean)
+provides `Machine.callbacks`. Its events distinguish received data, completed
+writes, work results, failure and close. Commands write bounded gather buffers,
+invoke/poll work, resume reads, drain or abort. State is committed before effects;
+the adapter yields before acquiring a one-shot work result, so cancellation cannot
+lose a returned resource before the pure machine adopts it. Generic replay and
+causal-invariant theorems are kernel-checked. `Machine.ExecutionContract` explicitly
+assumes that compiled IO observations follow this pure replay and command ordering;
+it does not assume any protocol invariant. Socket regressions cover binary echo,
+paused deferred work, writes larger than the native queue, more than 64 gather
+buffers, failure and shutdown at a scheduling boundary with owned resources.
+
 All socket operations must execute on the owning worker. A call from an
 `IO.asTask` thread or another worker returns an `IO.Error`. There is no implicit
 cross-thread dispatch. Callbacks must return promptly: blocking I/O or CPU-heavy
