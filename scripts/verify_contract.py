@@ -8,7 +8,7 @@ import subprocess
 
 root = Path(__file__).resolve().parents[1]
 source = root / 'LeanUV/Contract.lean'
-modules = [(source,'LeanUV.TCP.Contract.'),(root/'LeanUV/Machine.lean','LeanUV.TCP.Machine.')]
+modules = [(source,'LeanUV.TCP.Contract.'),(root/'LeanUV/Machine.lean','LeanUV.TCP.Machine.'),(root/'LeanUV/AdapterContract.lean','LeanUV.TCP.Machine.')]
 audit = root / 'LeanUV/ContractAudit.lean'
 declared = {prefix + name for path,prefix in modules for name in re.findall(r'^theorem\s+(\w+)',path.read_text(),re.M)}
 checked = set(re.findall(r'^#print axioms\s+(\S+)', audit.read_text(), re.M))
@@ -22,6 +22,6 @@ for name, _, deps in re.findall(r"'([^']+)' (does not depend on any axioms|depen
 assert set(rows) == declared, run.stdout
 print(json.dumps({'result':'PASS','lean':subprocess.check_output(['lean','--version'],text=True).strip(),
     'source_sha256':{str(path.relative_to(root)):hashlib.sha256(path.read_bytes()).hexdigest() for path,_ in modules}, 'axioms':rows,
-    'explicit_hypotheses':['NativeContract','ProgressContract','Machine.ExecutionContract'],
+    'explicit_hypotheses':['NativeContract','ProgressContract','Machine.ExecutionContract','Machine.AdapterContract'],
     'native_implementation_proved':False,
     'http_correctness_assumed':False},indent=2))

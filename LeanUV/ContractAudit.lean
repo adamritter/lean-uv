@@ -1,3 +1,4 @@
+import LeanUV.AdapterContract
 import LeanUV.Machine
 import LeanUV.Contract
 
@@ -11,3 +12,9 @@ import LeanUV.Contract
 #print axioms LeanUV.TCP.Machine.scheduled_invariant
 #print axioms LeanUV.TCP.Machine.execution_invariant
 #print axioms LeanUV.TCP.Machine.execution_scheduled_invariant
+
+#print axioms LeanUV.TCP.Machine.adapter_output_prefix
+#print axioms LeanUV.TCP.Machine.adapter_graceful_output
+#print axioms LeanUV.TCP.Machine.adapter_input_prefix
+#print axioms LeanUV.TCP.Machine.finalizers_weight
+#print axioms LeanUV.TCP.Machine.adapter_finalizer_weight
