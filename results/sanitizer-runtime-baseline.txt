@@ -1,558 +1,276 @@
+798594317
 
 =================================================================
-==1758552==ERROR: LeakSanitizer: detected memory leaks
+==1782617==ERROR: LeakSanitizer: detected memory leaks
 
 Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91e894 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51e894) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee619268 in l_Int_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x219268) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee586634 in initialize_Init_Data_UInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x186634) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee5c0448 in initialize_Init_Data_UInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1c0448) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee86e8c4 in initialize_Init_Data_Char_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x46e8c4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee6de1c8 in initialize_Init_Data_Char (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x2de1c8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee519c70 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119c70) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #14 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #15 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca045c18 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x645c18) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9eb3da8 in runtime_initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3da8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfc9eb3ed8 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3ed8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfc9eb9d78 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b9d78) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfc9ebcf90 in initialize_Init_Grind_Homo_UInt8 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bcf90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfc9d067cc in initialize_Init_Grind_Homo (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3067cc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xb8bfc9bcc888 in initialize_Init_Grind (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1cc888) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #11 0xb8bfc9ebff64 in initialize_Init_Data_Char_Ordinal (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bff64) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #12 0xb8bfc9d06c90 in initialize_Init_Data_Char (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x306c90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #13 0xb8bfc9c0b1dc in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20b1dc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #14 0xb8bfc9ae199c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe199c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #15 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #16 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #17 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #18 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #19 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91e894 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51e894) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee619268 in l_Int_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x219268) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee586208 in initialize_Init_Data_UInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x186208) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee5c0448 in initialize_Init_Data_UInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1c0448) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee86e8c4 in initialize_Init_Data_Char_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x46e8c4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee6de1c8 in initialize_Init_Data_Char (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x2de1c8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee519c70 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119c70) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #14 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #15 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca045c18 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x645c18) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9b07680 in runtime_initialize_Init_Prelude (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x107680) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfc9b07718 in initialize_Init_Prelude (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x107718) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfc9ae17e4 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe17e4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #11 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #12 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91cb78 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51cb78) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee7352a4 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3352a4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee73f4e4 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33f4e4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee7f298c in initialize_Init_GrindInstances_ToInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f298c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee60bcc0 in initialize_Init_Data_Int_OfNat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20bcc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee758b3c in initialize_Init_Data_Int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x358b3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee519ce8 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119ce8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #14 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #15 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca045c18 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x645c18) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9ac3e30 in l_Nat_reprFast (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc3e30) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfc9ac1234 in run_main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1234) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfca040208 in std::__1::__function::__func<lean_run_main::$_0, void ()>::operator()[abi:nqe230100]() (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x640208) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfca040b4c in lean::lthread::imp::_main(void*) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x640b4c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xe2f5dd75f3d0 in asan_thread_start ../../../../src/libsanitizer/asan/asan_interceptors.cpp:234
+    #10 0xe2f5dce65958 in start_thread nptl/pthread_create.c:447
+    #11 0xe2f5dcecba48 in thread_start ../sysdeps/unix/sysv/linux/aarch64/clone3.S:76
 
 Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91cb78 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51cb78) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee87ad18 in initialize_Init_Data_Range_Polymorphic_UInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x47ad18) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee5e2128 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1e2128) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee51a238 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x11a238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #11 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #12 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca044000 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x644000) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9eb3d38 in runtime_initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3d38) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfc9eb3ed8 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3ed8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfc9eb9d78 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b9d78) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfc9ebcf90 in initialize_Init_Grind_Homo_UInt8 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bcf90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfc9d067cc in initialize_Init_Grind_Homo (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3067cc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xb8bfc9bcc888 in initialize_Init_Grind (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1cc888) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #11 0xb8bfc9ebff64 in initialize_Init_Data_Char_Ordinal (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bff64) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #12 0xb8bfc9d06c90 in initialize_Init_Data_Char (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x306c90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #13 0xb8bfc9c0b1dc in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20b1dc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #14 0xb8bfc9ae199c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe199c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #15 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #16 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #17 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #18 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #19 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91cb78 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51cb78) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee4dbf20 in initialize_Init_Prelude (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xdbf20) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee4353a4 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x353a4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #9 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #10 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91e894 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51e894) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee4dbf54 in initialize_Init_Prelude (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xdbf54) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee4353a4 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x353a4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #9 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #10 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91e894 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51e894) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee73582c in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33582c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee73f4e4 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33f4e4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee7f298c in initialize_Init_GrindInstances_ToInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f298c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee60bcc0 in initialize_Init_Data_Int_OfNat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20bcc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee758b3c in initialize_Init_Data_Int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x358b3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee519ce8 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119ce8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #14 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #15 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91cb78 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51cb78) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee5799e8 in initialize_Init_Data_UInt_BasicAux (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1799e8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee5d5e9c in initialize_Init_Data_Char_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1d5e9c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee625b0c in initialize_Init_Data_String_Bootstrap (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x225b0c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee608440 in initialize_Init_Data_Format_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x208440) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee7719e8 in initialize_Init_Data_Repr (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3719e8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee5c7298 in initialize_Init_Data_ToString_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1c7298) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee47e9a4 in initialize_Init_Util (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x7e9a4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee7f6250 in initialize_Init_GetElem (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f6250) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee69fc24 in initialize_Init_Data_Array_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x29fc24) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee8d07d8 in initialize_Init_Data_Array_GetLit (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4d07d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xc0e2ee7bf980 in initialize_Init_Meta_Defs (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3bf980) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #15 0xc0e2ee46e688 in initialize_Init_Meta (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6e688) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #16 0xc0e2ee43cd28 in initialize_Init_Conv (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3cd28) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #17 0xc0e2ee791d30 in initialize_Init_NotationExtra (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x391d30) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #18 0xc0e2ee526fc0 in initialize_Init_TacticsExtra (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x126fc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #19 0xc0e2ee43541c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3541c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #20 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #21 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #22 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #23 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #24 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91e894 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51e894) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee579a38 in initialize_Init_Data_UInt_BasicAux (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x179a38) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee5d5e9c in initialize_Init_Data_Char_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1d5e9c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee625b0c in initialize_Init_Data_String_Bootstrap (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x225b0c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee608440 in initialize_Init_Data_Format_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x208440) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee7719e8 in initialize_Init_Data_Repr (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3719e8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee5c7298 in initialize_Init_Data_ToString_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1c7298) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee47e9a4 in initialize_Init_Util (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x7e9a4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee7f6250 in initialize_Init_GetElem (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f6250) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee69fc24 in initialize_Init_Data_Array_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x29fc24) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee8d07d8 in initialize_Init_Data_Array_GetLit (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4d07d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xc0e2ee7bf980 in initialize_Init_Meta_Defs (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3bf980) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #15 0xc0e2ee46e688 in initialize_Init_Meta (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6e688) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #16 0xc0e2ee43cd28 in initialize_Init_Conv (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3cd28) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #17 0xc0e2ee791d30 in initialize_Init_NotationExtra (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x391d30) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #18 0xc0e2ee526fc0 in initialize_Init_TacticsExtra (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x126fc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #19 0xc0e2ee43541c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3541c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #20 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #21 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #22 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #23 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #24 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91e894 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51e894) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee87aec0 in initialize_Init_Data_Range_Polymorphic_UInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x47aec0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee5e2128 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1e2128) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee51a238 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x11a238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #11 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #12 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 16 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91e894 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51e894) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee772160 in initialize_Init_Data_Repr (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x372160) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee5c7298 in initialize_Init_Data_ToString_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1c7298) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee47e9a4 in initialize_Init_Util (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x7e9a4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee7f6250 in initialize_Init_GetElem (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f6250) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee69fc24 in initialize_Init_Data_Array_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x29fc24) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee8d07d8 in initialize_Init_Data_Array_GetLit (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4d07d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee7bf980 in initialize_Init_Meta_Defs (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3bf980) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee46e688 in initialize_Init_Meta (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6e688) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee43cd28 in initialize_Init_Conv (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3cd28) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee791d30 in initialize_Init_NotationExtra (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x391d30) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xc0e2ee526fc0 in initialize_Init_TacticsExtra (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x126fc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #15 0xc0e2ee43541c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3541c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #16 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #17 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #18 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #19 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #20 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca044000 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x644000) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9b07664 in runtime_initialize_Init_Prelude (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x107664) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfc9b07718 in initialize_Init_Prelude (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x107718) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfc9ae17e4 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe17e4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #11 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #12 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91edf8 in lean::mpz_to_int(lean::mpz const&) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51edf8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee91f004 in lean_int_big_neg (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51f004) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee883c48 in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x483c48) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee5e2150 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1e2150) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee51a238 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x11a238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #12 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #13 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca04697c in lean_int_big_sub (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64697c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9eb2764 in _init_l_ISize_maxValue___closed__5 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b2764) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfca04b578 in lean_usize_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b578) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfc9eb3dc4 in runtime_initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3dc4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfc9eb3ed8 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3ed8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfc9eb9d78 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b9d78) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xb8bfc9ebcf90 in initialize_Init_Grind_Homo_UInt8 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bcf90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #11 0xb8bfc9d067cc in initialize_Init_Grind_Homo (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3067cc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #12 0xb8bfc9bcc888 in initialize_Init_Grind (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1cc888) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #13 0xb8bfc9ebff64 in initialize_Init_Data_Char_Ordinal (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bff64) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #14 0xb8bfc9d06c90 in initialize_Init_Data_Char (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x306c90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #15 0xb8bfc9c0b1dc in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20b1dc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #16 0xb8bfc9ae199c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe199c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #17 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #18 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #19 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #20 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #21 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee923d14 in lean::mpz_to_int_core(lean::mpz const&) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x523d14) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee91ef90 in lean_big_int64_to_int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51ef90) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee735e84 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x335e84) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee73f4e4 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33f4e4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee7f298c in initialize_Init_GrindInstances_ToInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f298c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee60bcc0 in initialize_Init_Data_Int_OfNat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20bcc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee758b3c in initialize_Init_Data_Int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x358b3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee519ce8 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119ce8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #15 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #16 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca04697c in lean_int_big_sub (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64697c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9f77918 in _init_l___private_Init_Data_Range_Polymorphic_SInt_0__ISize_maxValueSealed___closed__1 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x577918) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfca04b578 in lean_usize_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b578) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfc9f773c4 in runtime_initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5773c4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfc9f776d8 in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5776d8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfc9d62704 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x362704) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xb8bfc9c0b7a4 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20b7a4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #11 0xb8bfc9ae199c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe199c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #12 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #13 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #14 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #15 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #16 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee923d14 in lean::mpz_to_int_core(lean::mpz const&) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x523d14) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee91ef90 in lean_big_int64_to_int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51ef90) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee883dd8 in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x483dd8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee5e2150 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1e2150) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee51a238 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x11a238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #12 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #13 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca045c18 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x645c18) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfc9c41d64 in l_Int_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x241d64) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfc9eb41e4 in _init_l_ISize_maxValue___closed__4 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b41e4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfc9eb2764 in _init_l_ISize_maxValue___closed__5 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b2764) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfca04b578 in lean_usize_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b578) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xb8bfc9eb3dc4 in runtime_initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3dc4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #11 0xb8bfc9eb3ed8 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3ed8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #12 0xb8bfc9eb9d78 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b9d78) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #13 0xb8bfc9ebcf90 in initialize_Init_Grind_Homo_UInt8 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bcf90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #14 0xb8bfc9d067cc in initialize_Init_Grind_Homo (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3067cc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #15 0xb8bfc9bcc888 in initialize_Init_Grind (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1cc888) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #16 0xb8bfc9ebff64 in initialize_Init_Data_Char_Ordinal (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bff64) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #17 0xb8bfc9d06c90 in initialize_Init_Data_Char (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x306c90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #18 0xb8bfc9c0b1dc in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20b1dc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #19 0xb8bfc9ae199c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe199c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #20 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #21 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #22 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #23 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #24 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee923d14 in lean::mpz_to_int_core(lean::mpz const&) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x523d14) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee91ef90 in lean_big_int64_to_int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51ef90) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee735e78 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x335e78) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee73f4e4 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33f4e4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee7f298c in initialize_Init_GrindInstances_ToInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f298c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee60bcc0 in initialize_Init_Data_Int_OfNat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20bcc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee758b3c in initialize_Init_Data_Int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x358b3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee519ce8 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119ce8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #15 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #16 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca0464d8 in lean_int_big_neg (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6464d8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9f7606c in _init_l___private_Init_Data_Range_Polymorphic_SInt_0__ISize_minValueSealed___closed__3 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x57606c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfca04b578 in lean_usize_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b578) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfc9f773a8 in runtime_initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5773a8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfc9f776d8 in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5776d8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfc9d62704 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x362704) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xb8bfc9c0b7a4 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20b7a4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #11 0xb8bfc9ae199c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe199c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #12 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #13 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #14 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #15 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #16 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91cb78 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51cb78) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee883b04 in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x483b04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee5e2150 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1e2150) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee51a238 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x11a238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #11 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #12 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca045c18 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x645c18) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfc9c41d64 in l_Int_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x241d64) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfc9f778c4 in _init_l___private_Init_Data_Range_Polymorphic_SInt_0__ISize_minValueSealed___closed__2 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5778c4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfc9f7606c in _init_l___private_Init_Data_Range_Polymorphic_SInt_0__ISize_minValueSealed___closed__3 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x57606c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfca04b578 in lean_usize_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b578) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xb8bfc9f773a8 in runtime_initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5773a8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #11 0xb8bfc9f776d8 in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5776d8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #12 0xb8bfc9d62704 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x362704) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #13 0xb8bfc9c0b7a4 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20b7a4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #14 0xb8bfc9ae199c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe199c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #15 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #16 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #17 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #18 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #19 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91cb78 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51cb78) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee7353f0 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3353f0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee73f4e4 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33f4e4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee7f298c in initialize_Init_GrindInstances_ToInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f298c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee60bcc0 in initialize_Init_Data_Int_OfNat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20bcc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee758b3c in initialize_Init_Data_Int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x358b3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee519ce8 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119ce8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #14 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #15 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca044000 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x644000) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9f77814 in _init_l___private_Init_Data_Range_Polymorphic_SInt_0__Int64_minValueSealed___closed__1 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x577814) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfca04b4ac in lean_uint64_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b4ac) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfc9f75364 in _init_l___private_Init_Data_Range_Polymorphic_SInt_0__Int64_minValueSealed___closed__2 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x575364) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfca04b4ac in lean_uint64_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b4ac) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfc9f77338 in runtime_initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x577338) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xb8bfc9f776d8 in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5776d8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #11 0xb8bfc9d62704 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x362704) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #12 0xb8bfc9c0b7a4 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20b7a4) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #13 0xb8bfc9ae199c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe199c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #14 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #15 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #16 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #17 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #18 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91d0f0 in lean_nat_big_sub (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51d0f0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee579a84 in initialize_Init_Data_UInt_BasicAux (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x179a84) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee5d5e9c in initialize_Init_Data_Char_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1d5e9c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee625b0c in initialize_Init_Data_String_Bootstrap (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x225b0c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee608440 in initialize_Init_Data_Format_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x208440) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee7719e8 in initialize_Init_Data_Repr (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3719e8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee5c7298 in initialize_Init_Data_ToString_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1c7298) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee47e9a4 in initialize_Init_Util (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x7e9a4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee7f6250 in initialize_Init_GetElem (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f6250) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee69fc24 in initialize_Init_Data_Array_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x29fc24) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee8d07d8 in initialize_Init_Data_Array_GetLit (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4d07d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xc0e2ee7bf980 in initialize_Init_Meta_Defs (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3bf980) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #15 0xc0e2ee46e688 in initialize_Init_Meta (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6e688) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #16 0xc0e2ee43cd28 in initialize_Init_Conv (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3cd28) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #17 0xc0e2ee791d30 in initialize_Init_NotationExtra (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x391d30) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #18 0xc0e2ee526fc0 in initialize_Init_TacticsExtra (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x126fc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #19 0xc0e2ee43541c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3541c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #20 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #21 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #22 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #23 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #24 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca0464d8 in lean_int_big_neg (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6464d8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9eb26ac in _init_l_ISize_minValue___closed__1 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b26ac) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfca04b578 in lean_usize_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b578) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfc9eb3de0 in runtime_initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3de0) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfc9eb3ed8 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3ed8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfc9eb9d78 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b9d78) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xb8bfc9ebcf90 in initialize_Init_Grind_Homo_UInt8 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bcf90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #11 0xb8bfc9d067cc in initialize_Init_Grind_Homo (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3067cc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #12 0xb8bfc9bcc888 in initialize_Init_Grind (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1cc888) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #13 0xb8bfc9ebff64 in initialize_Init_Data_Char_Ordinal (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bff64) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #14 0xb8bfc9d06c90 in initialize_Init_Data_Char (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x306c90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #15 0xb8bfc9c0b1dc in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20b1dc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #16 0xb8bfc9ae199c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe199c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #17 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #18 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #19 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #20 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #21 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
 Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91ef0c in lean_big_size_t_to_int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51ef0c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee883adc in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x483adc) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee5e2150 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1e2150) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee51a238 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x11a238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #11 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #12 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
+    #0 0xe2f5dd7e76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+    #1 0xb8bfca132868 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x732868) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #2 0xb8bfca11474c in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x71474c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #3 0xb8bfca044000 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x644000) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #4 0xb8bfca04b178 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #5 0xb8bfc9eb3fb8 in _init_l_Int64_minValue___closed__1 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3fb8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #6 0xb8bfca04b4ac in lean_uint64_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b4ac) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #7 0xb8bfc9eb0698 in _init_l_Int64_minValue___closed__2 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b0698) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #8 0xb8bfca04b4ac in lean_uint64_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x64b4ac) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #9 0xb8bfc9eb3d70 in runtime_initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3d70) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #10 0xb8bfc9eb3ed8 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b3ed8) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #11 0xb8bfc9eb9d78 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4b9d78) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #12 0xb8bfc9ebcf90 in initialize_Init_Grind_Homo_UInt8 (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bcf90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #13 0xb8bfc9d067cc in initialize_Init_Grind_Homo (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3067cc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #14 0xb8bfc9bcc888 in initialize_Init_Grind (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1cc888) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #15 0xb8bfc9ebff64 in initialize_Init_Data_Char_Ordinal (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4bff64) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #16 0xb8bfc9d06c90 in initialize_Init_Data_Char (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x306c90) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #17 0xb8bfc9c0b1dc in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20b1dc) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #18 0xb8bfc9ae199c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xe199c) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #19 0xb8bfc9ac1178 in initialize_lean__uv_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1178) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #20 0xb8bfc9ac1300 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc1300) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
+    #21 0xe2f5dce084c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
+    #22 0xe2f5dce08594 in __libc_start_main_impl ../csu/libc-start.c:360
+    #23 0xb8bfc9ac0bec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0xc0bec) (BuildId: e165c858eba8e23b5aacaceb6808c2075d07f982)
 
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee923d14 in lean::mpz_to_int_core(lean::mpz const&) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x523d14) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee91ef90 in lean_big_int64_to_int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51ef90) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee735ec0 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x335ec0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee73f4e4 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33f4e4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee7f298c in initialize_Init_GrindInstances_ToInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f298c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee60bcc0 in initialize_Init_Data_Int_OfNat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20bcc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee758b3c in initialize_Init_Data_Int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x358b3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee519ce8 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119ce8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #15 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #16 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee923d14 in lean::mpz_to_int_core(lean::mpz const&) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x523d14) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee91ef90 in lean_big_int64_to_int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51ef90) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee735eb0 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x335eb0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee73f4e4 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33f4e4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee7f298c in initialize_Init_GrindInstances_ToInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f298c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee60bcc0 in initialize_Init_Data_Int_OfNat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20bcc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee758b3c in initialize_Init_Data_Int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x358b3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee519ce8 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119ce8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #15 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #16 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91edf8 in lean::mpz_to_int(lean::mpz const&) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51edf8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee91f004 in lean_int_big_neg (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51f004) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee735ea8 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x335ea8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee73f4e4 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33f4e4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee7f298c in initialize_Init_GrindInstances_ToInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f298c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee60bcc0 in initialize_Init_Data_Int_OfNat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20bcc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee758b3c in initialize_Init_Data_Int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x358b3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee519ce8 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119ce8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #15 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #16 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91edf8 in lean::mpz_to_int(lean::mpz const&) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51edf8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee91f304 in lean_int_big_sub (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51f304) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee735e9c in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x335e9c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee73f4e4 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33f4e4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee7f298c in initialize_Init_GrindInstances_ToInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f298c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee60bcc0 in initialize_Init_Data_Int_OfNat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20bcc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee758b3c in initialize_Init_Data_Int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x358b3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee519ce8 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119ce8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #15 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #16 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee923d14 in lean::mpz_to_int_core(lean::mpz const&) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x523d14) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee91ef90 in lean_big_int64_to_int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51ef90) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee883dcc in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x483dcc) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee5e2150 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1e2150) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee51a238 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x11a238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #12 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #13 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91e894 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51e894) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee619268 in l_Int_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x219268) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee883c08 in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x483c08) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee5e2150 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1e2150) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee51a238 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x11a238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #12 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #13 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91e894 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51e894) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee619268 in l_Int_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x219268) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee883c3c in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x483c3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee5e2150 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1e2150) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee51a238 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x11a238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #12 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #13 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91e894 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51e894) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee619268 in l_Int_pow (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x219268) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee735970 in initialize_Init_Data_SInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x335970) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee73f4e4 in initialize_Init_Data_SInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x33f4e4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee7f298c in initialize_Init_GrindInstances_ToInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f298c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee60bcc0 in initialize_Init_Data_Int_OfNat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x20bcc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee758b3c in initialize_Init_Data_Int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x358b3c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee519ce8 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119ce8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #15 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #16 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91edf8 in lean::mpz_to_int(lean::mpz const&) (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51edf8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee91f304 in lean_int_big_sub (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51f304) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee883c80 in initialize_Init_Data_Range_Polymorphic_SInt (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x483c80) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee5e2150 in initialize_Init_Data_Range_Polymorphic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1e2150) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee51a238 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x11a238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #12 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #13 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91ef0c in lean_big_size_t_to_int (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51ef0c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee585e78 in initialize_Init_Data_UInt_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x185e78) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee5c0448 in initialize_Init_Data_UInt_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1c0448) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee86e8c4 in initialize_Init_Data_Char_Lemmas (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x46e8c4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee6de1c8 in initialize_Init_Data_Char (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x2de1c8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee519c70 in initialize_Init_Data (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x119c70) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee435534 in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35534) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #13 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #14 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-Direct leak of 8 byte(s) in 1 object(s) allocated from:
-    #0 0xec978c7f76d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
-    #1 0xc0e2eea002d8 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6002d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #2 0xc0e2ee9e6d04 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x5e6d04) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #3 0xc0e2ee91cb78 in lean_cstr_to_nat (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x51cb78) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #4 0xc0e2ee5799fc in initialize_Init_Data_UInt_BasicAux (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1799fc) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #5 0xc0e2ee5d5e9c in initialize_Init_Data_Char_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1d5e9c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #6 0xc0e2ee625b0c in initialize_Init_Data_String_Bootstrap (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x225b0c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #7 0xc0e2ee608440 in initialize_Init_Data_Format_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x208440) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #8 0xc0e2ee7719e8 in initialize_Init_Data_Repr (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3719e8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #9 0xc0e2ee5c7298 in initialize_Init_Data_ToString_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x1c7298) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #10 0xc0e2ee47e9a4 in initialize_Init_Util (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x7e9a4) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #11 0xc0e2ee7f6250 in initialize_Init_GetElem (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3f6250) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #12 0xc0e2ee69fc24 in initialize_Init_Data_Array_Basic (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x29fc24) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #13 0xc0e2ee8d07d8 in initialize_Init_Data_Array_GetLit (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x4d07d8) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #14 0xc0e2ee7bf980 in initialize_Init_Meta_Defs (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3bf980) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #15 0xc0e2ee46e688 in initialize_Init_Meta (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x6e688) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #16 0xc0e2ee43cd28 in initialize_Init_Conv (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3cd28) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #17 0xc0e2ee791d30 in initialize_Init_NotationExtra (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x391d30) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #18 0xc0e2ee526fc0 in initialize_Init_TacticsExtra (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x126fc0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #19 0xc0e2ee43541c in initialize_Init (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x3541c) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #20 0xc0e2ee4351a0 in initialize_LeanUVTests_SanitizerBaseline (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x351a0) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #21 0xc0e2ee435238 in main (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x35238) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-    #22 0xec978be184c0 in __libc_start_call_main ../sysdeps/nptl/libc_start_call_main.h:58
-    #23 0xec978be18594 in __libc_start_main_impl ../csu/libc-start.c:360
-    #24 0xc0e2ee434fec in _start (/dev/shm/lean-uv-20261024/bin/sanitized/baseline+0x34fec) (BuildId: f09eefaa6418988583cf9023be2b9e765869a7e5)
-
-SUMMARY: AddressSanitizer: 328 byte(s) leaked in 30 allocation(s).
+SUMMARY: AddressSanitizer: 144 byte(s) leaked in 13 allocation(s).

@@ -211,3 +211,12 @@ downstream package can have its own `Bench` and `Tests` libraries without a Lake
 module-resolution collision. [Gather/wakeup regressions](results/gather-wakeup-validation.json)
 and the ASan/UBSan suite cover empty gathers, count limits, 16 MiB partial writes,
 and 32 asynchronous completions with half-closed clients.
+
+Lean 4.26 and 4.35 are checked in CI. On 4.35, the no-network sanitizer control
+also formats a runtime Nat: this reproduces a 16-byte persistent `USize.size`
+allocation in `Nat.reprFast`. The suppression is restricted to that runtime
+formatter (and the existing Init startup scope); leak detection remains enabled
+for the binding. The initial failure and unsuppressed control are retained in
+`results/lean435-sanitizer-initial-failure.txt` and
+`results/sanitizer-runtime-baseline.txt`. This check instruments the package C
+code, not the prebuilt Lean runtime or its allocator.

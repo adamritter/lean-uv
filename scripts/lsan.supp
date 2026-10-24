@@ -1,4 +1,8 @@
-# The no-I/O Tests.SanitizerBaseline executable reproduces these Init startup
+# The no-network LeanUVTests.SanitizerBaseline executable reproduces these Init startup
 # allocations. The raw unsuppressed report is preserved under results/.
 # This does not match any allocation made by the native TCP worker callbacks.
 leak:initialize_Init_
+# Lean 4.35 Nat.reprFast lazily materializes USize.size (2^wordsize) as a
+# persistent GMP Nat. The no-network control formats a runtime Nat and reproduces
+# this exact 16-byte allocation. No native/uv.c allocation has this frame.
+leak:l_Nat_reprFast

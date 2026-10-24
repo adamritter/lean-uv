@@ -1,0 +1,27 @@
+✔ [5/7] Built LeanUVTests.SanitizerBaseline (199ms)
+✔ [6/7] Built LeanUVTests.SanitizerBaseline:c.o (60ms)
+✔ [7/7] Built sanitizer_baseline:exe (95ms)
+Build completed successfully (7 jobs).
+Traceback (most recent call last):
+  File "/dev/shm/lean-uv-20261024/scripts/test.py", line 269, in <module>
+    main()
+  File "/dev/shm/lean-uv-20261024/scripts/test.py", line 256, in main
+    check_http()
+  File "/dev/shm/lean-uv-20261024/scripts/test.py", line 105, in check_http
+    with server(threads=threads) as (address, record):
+  File "/usr/lib/python3.12/contextlib.py", line 144, in __exit__
+    next(self.gen)
+  File "/dev/shm/lean-uv-20261024/scripts/test.py", line 62, in server
+    assert p.returncode == 0, record
+           ^^^^^^^^^^^^^^^^^
+AssertionError: {'command': ['uv_http', '33911', '1'], 'checks': ['150 fresh dynamic pipelined requests with random fragmentation', 'all two-part request boundaries', 'body/transfer-coding/duplicate-host/header-limit rejection', 'all 1 workers receive connections on the same port'], 'returncode': 1, 'stdout': 'worker=0 accepted=236 reads=307 sends=386 bytes=42546 queued=0 errors=0 peer_disconnects=0 elapsed_ns=112236237\n', 'stderr': '\n=================================================================\n==1770968==ERROR: LeakSanitizer: detected memory leaks\n\nDirect leak of 16 byte(s) in 1 object(s) allocated from:\n    #0 0xf4fef16476d0 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69\n    #1 0xc19fa2b9ab78 in __gmp_default_allocate (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x75ab78) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #2 0xc19fa2b7ca54 in __gmpz_init_set (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x73ca54) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #3 0xc19fa2aaf1f8 in lean_nat_pow (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x66f1f8) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #4 0xc19fa2ab4758 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x674758) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #5 0xc19fa256f890 in l_Nat_reprFast (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x12f890) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #6 0xc19fa251a2b0 in lp_lean__uv_Bench_response (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0xda2b0) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #7 0xc19fa2ab4758 in lean_obj_once_cold (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x674758) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #8 0xc19fa251806c in lp_lean__uv___private_Init_Data_Array_Basic_0__Array_forIn_x27Unsafe_loop___at___00main_spec__0 (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0xd806c) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #9 0xc19fa25183bc in lp_lean__uv_main___lam__0 (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0xd83bc) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #10 0xc19fa2518568 in lp_lean__uv_main___lam__0___boxed (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0xd8568) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #11 0xc19fa2abb3bc in lean_apply_2 (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x67b3bc) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #12 0xc19fa25266d8 in on_read native/uv.c:344\n    #13 0xc19fa2bb1eb8 in uv__read (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x771eb8) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #14 0xc19fa2bb2780 in uv__stream_io (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x772780) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #15 0xc19fa2bb91a0 in uv__io_poll (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x7791a0) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #16 0xc19fa2ba830c in uv_run (/dev/shm/lean-uv-20261024/bin/sanitized/uv_http+0x76830c) (BuildId: 34247151f3c71c227c19a7459df0a79505aef3f6)\n    #17 0xc19fa2525114 in worker_main native/uv.c:495\n    #18 0xf4fef15bf3d0 in asan_thread_start ../../../../src/libsanitizer/asan/asan_interceptors.cpp:234\n    #19 0xf4fef0cc5958 in start_thread nptl/pthread_create.c:447\n    #20 0xf4fef0d2ba48 in thread_start ../sysdeps/unix/sysv/linux/aarch64/clone3.S:76\n\nSUMMARY: AddressSanitizer: 16 byte(s) leaked in 1 allocation(s).\n'}
+Traceback (most recent call last):
+  File "/dev/shm/lean-uv-20261024/scripts/sanitize.py", line 53, in <module>
+    main()
+  File "/dev/shm/lean-uv-20261024/scripts/sanitize.py", line 49, in main
+    run(["python3", "scripts/test.py", "--bin-dir", output, "--output", "results/sanitizer.json"], env=env)
+  File "/dev/shm/lean-uv-20261024/scripts/sanitize.py", line 14, in run
+    subprocess.run([str(x) for x in cmd], cwd=ROOT, check=True, **kwargs)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['python3', 'scripts/test.py', '--bin-dir', '/dev/shm/lean-uv-20261024/bin/sanitized', '--output', 'results/sanitizer.json']' returned non-zero exit status 1.

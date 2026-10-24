@@ -14,6 +14,15 @@ def response (body : ByteArray) (close := false) (status := "200 OK") : ByteArra
 
 def payload : ByteArray := (String.ofList (List.replicate 1024 'x')).toUTF8
 
+/-- HTTP optional whitespace is SP / HTAB. Byte-based for Lean 4.26/4.35 compatibility. -/
+private def trimOWS (s : String) : String := Id.run do
+  let bytes := s.toUTF8
+  let mut first := 0
+  let mut last := bytes.size
+  while first < last && (bytes[first]! == 32 || bytes[first]! == 9) do first := first + 1
+  while first < last && (bytes[last - 1]! == 32 || bytes[last - 1]! == 9) do last := last - 1
+  return String.fromUTF8! (bytes.extract first last)
+
 private def parseHead (bytes : ByteArray) : Except String Request := do
   let some text := String.fromUTF8? bytes | throw "400 Bad Request"
   let lines := text.splitOn "\r\n"
@@ -30,8 +39,8 @@ private def parseHead (bytes : ByteArray) : Except String Request := do
     let kv := line.splitOn ":"
     if kv.length < 2 then throw "400 Bad Request"
     let name := kv.head!
-    if name.isEmpty || name != name.trim then throw "400 Bad Request"
-    let value := (String.intercalate ":" (kv.drop 1)).trim.toLower
+    if name.isEmpty || name != trimOWS name then throw "400 Bad Request"
+    let value := (trimOWS (String.intercalate ":" (kv.drop 1))).toLower
     match name.toLower with
     | "host" =>
       if host || value.isEmpty then throw "400 Bad Request"
@@ -41,7 +50,7 @@ private def parseHead (bytes : ByteArray) : Except String Request := do
       if contentLength || value != "0" then throw "400 Bad Request"
       contentLength := true
     | "connection" =>
-      if (value.splitOn ",").any (·.trim == "close") then close := true
+      if (value.splitOn ",").any (fun option => trimOWS option == "close") then close := true
     | _ => pure ()
   if !host then throw "400 Bad Request"
   return { target, close }
