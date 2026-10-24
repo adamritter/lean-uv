@@ -1,0 +1,24 @@
+{
+  "result": "PASS",
+  "lean": "Lean (version 4.26.0, aarch64-unknown-linux-gnu, commit d8204c9fd894f91bbb2cdfec5912ec8196fd8562, Release)",
+  "contract_sha256": "b4e3a5f27e30c3bba925ea9a0a065c4df3d4f5bdd6aabf05f835a76e88a37425",
+  "axioms": {
+    "LeanUV.TCP.Contract.prefix_refl": [
+      "propext"
+    ],
+    "LeanUV.TCP.Contract.prefix_trans": [
+      "propext"
+    ],
+    "LeanUV.TCP.Contract.output_prefix": [],
+    "LeanUV.TCP.Contract.closed_write_released": [
+      "propext"
+    ],
+    "LeanUV.TCP.Contract.graceful_exact_output": []
+  },
+  "explicit_hypotheses": [
+    "NativeContract",
+    "ProgressContract"
+  ],
+  "native_implementation_proved": false,
+  "http_correctness_assumed": false
+}

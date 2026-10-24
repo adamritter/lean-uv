@@ -91,6 +91,16 @@ The callback contract is explicit:
 | `Socket.queuedBytes` | Total sizes of buffers retained by pending writes. |
 | `Socket.stopServer` | Request all workers to stop; active sockets are aborted within the control timer's next iteration. |
 
+The formal native boundary is recorded in [LeanUV/Contract.lean](LeanUV/Contract.lean).
+`NativeContract` states byte ordering, callback serialization and ownership,
+retained-buffer ownership, close behavior and graceful draining. These are
+explicit assumptions about C/libuv/runtime/OS behavior, not a proof of that code.
+`ProgressContract` separately states scheduling, network and application progress
+premises. Neither record assumes any HTTP parsing or application correctness.
+A failed native write can already have emitted a prefix; such a failure aborts
+the socket and must never be retried as a whole message. A write completion or
+graceful close does not assert that the peer application has consumed the bytes.
+
 All socket operations must execute on the owning worker. A call from an
 `IO.asTask` thread or another worker returns an `IO.Error`. There is no implicit
 cross-thread dispatch. Callbacks must return promptly: blocking I/O or CPU-heavy

@@ -15,7 +15,10 @@ namespace Socket
 
 /-- Submit bytes in order. The buffer is retained until libuv finishes writing.
 Success means accepted/queued, not acknowledged by the peer. Throws if the bounded
-write queue would overflow. Partial writes are handled internally. -/
+write queue would overflow. Partial writes are handled internally. An error
+following a partial native write can leave a prefix in the TCP stack and closes
+the connection: never retry the entire buffer as though the failed call had no
+effect. The explicit native assumptions are in `LeanUV.Contract`. -/
 @[extern "leanuv_send"] opaque send (socket : @& Socket) (bytes : ByteArray) : IO Unit
 
 /-- Submit up to 64 buffers as one ordered gather write, without copying payloads.
