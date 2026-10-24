@@ -28,12 +28,17 @@ def main():
         "baseline": ["Tests/SanitizerBaseline"],
     }.items():
         objects = [ROOT / f".lake/build/ir/{module}.c.o.export" for module in modules]
+        # Let system GCC supply its shared unwinder. Lean's static libunwind
+        # conflicts with libasan's DWARF unwinding on the no-I/O baseline.
         run(["cc", "-g", "-fsanitize=address,undefined", "-o", output/exe, *objects, *([] if exe == "baseline" else [obj]),
              "-L", prefix/"lib/lean", "-L", prefix/"lib", "-Wl,--start-group",
              "-lleancpp", "-lLean", "-lStd", "-lInit", "-lleanrt", "-Wl,--end-group",
-             "-Wl,-Bstatic", "-lc++", "-lc++abi", "-lunwind", "-lgmp", "-luv",
+             "-Wl,-Bstatic", "-lc++", "-lc++abi", "-lgmp", "-luv",
              "-Wl,-Bdynamic", "-lm", "-ldl", "-pthread"])
-    env = {**os.environ, "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1",
+    # The shipped x86_64 GMP/Lean libraries omit frame pointers. Fast malloc
+    # unwinding stops at GMP and hides the Init caller, so the startup-only
+    # suppression cannot match. DWARF unwinding retains that exact scope.
+    env = {**os.environ, "ASAN_OPTIONS": "detect_leaks=1:halt_on_error=1:fast_unwind_on_malloc=0",
            "UBSAN_OPTIONS": "halt_on_error=1:print_stacktrace=1"}
     baseline = subprocess.run([str(output/"baseline")], capture_output=True, text=True, env=env)
     (ROOT/"results/sanitizer-runtime-baseline.txt").write_text(baseline.stdout+baseline.stderr)

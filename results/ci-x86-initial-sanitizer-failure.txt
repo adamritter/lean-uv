@@ -1,0 +1,28 @@
+linux	FFI memory and undefined-behavior checks	﻿2026-10-24T14:06:51.3759616Z ##[group]Run python3 scripts/sanitize.py
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:51.3760018Z [36;1mpython3 scripts/sanitize.py[0m
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:51.3794678Z shell: /usr/bin/bash -e {0}
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:51.3795006Z ##[endgroup]
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:51.9956840Z ✔ [5/7] Built Tests.SanitizerBaseline (163ms)
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:52.0958040Z ✔ [6/7] Built Tests.SanitizerBaseline:c.o (43ms)
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:52.1959722Z ✔ [7/7] Built sanitizer_baseline:exe (114ms)
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:52.1964687Z Build completed successfully (7 jobs).
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.1542097Z 
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.1543119Z =================================================================
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.1543958Z ==2881==ERROR: LeakSanitizer: detected memory leaks
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.1544420Z 
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.1544653Z Direct leak of 328 byte(s) in 30 object(s) allocated from:
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.1545336Z     #0 0x7f95754fd9c7 in malloc ../../../../src/libsanitizer/asan/asan_malloc_linux.cpp:69
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.1546423Z     #1 0x5596b1a84588 in __gmp_default_allocate (/home/runner/work/lean-uv/lean-uv/bin/sanitized/baseline+0x595588) (BuildId: c994fb93ed09f492bdb17e8b70decea1ac6135e5)
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.1547106Z 
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.1547396Z SUMMARY: AddressSanitizer: 328 byte(s) leaked in 30 allocation(s).
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2486257Z Traceback (most recent call last):
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2487335Z   File "/home/runner/work/lean-uv/lean-uv/scripts/sanitize.py", line 48, in <module>
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2488166Z     main()
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2488882Z   File "/home/runner/work/lean-uv/lean-uv/scripts/sanitize.py", line 43, in main
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2489710Z     run([output/"baseline"], env=env)
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2490496Z   File "/home/runner/work/lean-uv/lean-uv/scripts/sanitize.py", line 14, in run
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2491565Z     subprocess.run([str(x) for x in cmd], cwd=ROOT, check=True, **kwargs)
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2492166Z   File "/usr/lib/python3.12/subprocess.py", line 571, in run
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2492716Z     raise CalledProcessError(retcode, process.args,
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2493505Z subprocess.CalledProcessError: Command '['/home/runner/work/lean-uv/lean-uv/bin/sanitized/baseline']' returned non-zero exit status 1.
+linux	FFI memory and undefined-behavior checks	2026-10-24T14:06:54.2626833Z ##[error]Process completed with exit code 1.

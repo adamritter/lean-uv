@@ -55,7 +55,7 @@ Use it from another Lake package:
 [[require]]
 name = "lean_uv"
 git = "https://github.com/adamritter/lean-uv.git"
-rev = "v0.1.0"
+rev = "v0.1.1"
 ```
 
 An entire four-worker binary echo server is:
@@ -184,6 +184,11 @@ not a proof that every Lean allocation is leak-free. Leak detection stays enable
 only Lean `Init` startup allocations are suppressed, after reproducing them in
 the no-I/O [baseline](Tests/SanitizerBaseline.lean). The unsuppressed baseline
 report and the exact [suppression](scripts/lsan.supp) are preserved.
+The sanitizer uses DWARF malloc-stack unwinding so the same narrowly scoped
+suppression also works with x86_64 runtime libraries that omit frame pointers.
+Its separate test executables use GCC's shared unwinder; mixing libasan with
+Lean's static unwinder crashes even the empty control with DWARF unwinding.
+The initial x86 CI failure is retained in [the diagnostic log](results/ci-x86-initial-sanitizer-failure.txt).
 
 Upstream references: [libuv loop/thread design](https://docs.libuv.org/en/v1.x/design.html),
 [stream and buffer lifetimes](https://docs.libuv.org/en/v1.x/stream.html),

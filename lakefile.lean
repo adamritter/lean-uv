@@ -2,7 +2,7 @@ import Lake
 open System Lake DSL
 
 package lean_uv where
-  version := v!"0.1.0"
+  version := v!"0.1.1"
   moreLinkArgs := #["-luv", "-lpthread", "-ldl"]
 
 target uv.o pkg : FilePath := do
