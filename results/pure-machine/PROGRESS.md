@@ -20,3 +20,9 @@ TCP stack, including native queue-limit splits. This applies to prefixes without
 an interrupted native write; failed writes retain the weaker ordered-prefix
 guarantee. It does not mean that a peer application consumed the response.
 The completion-contract audits check 17 theorems on both Lean versions.
+
+The final history contract strengthens `Dispatch` with
+`histories next = histories first ++ [event]`. Each progress event is therefore
+the actual next observed event, with neither omitted intermediate events nor
+hypothetical substitutions. Both-version history-contract audit results preserve
+the exact strengthened source hashes.

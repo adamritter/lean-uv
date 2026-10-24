@@ -1,0 +1,71 @@
+{
+  "result": "PASS",
+  "lean": "Lean (version 4.35.0, aarch64-unknown-linux-gnu, commit eb6cafb7290e8bd5f2937522d8d804f58f02bafc, Release)",
+  "source_sha256": {
+    "LeanUV/Contract.lean": "b4e3a5f27e30c3bba925ea9a0a065c4df3d4f5bdd6aabf05f835a76e88a37425",
+    "LeanUV/Machine.lean": "a425dc87223363749d97efdd14d4de36fa95589243743fc2203565e17b2878dc",
+    "LeanUV/AdapterContract.lean": "6bd0f01d81e30c37af8966072a66242912a78e51597ef7cdcaff411f64512820",
+    "LeanUV/ProgressContract.lean": "149f35fbe41bd8cffdebeb30f804bbf7e1cdb345d564873dc790d332186df2c0"
+  },
+  "axioms": {
+    "LeanUV.TCP.Contract.prefix_refl": [
+      "propext"
+    ],
+    "LeanUV.TCP.Contract.prefix_trans": [
+      "propext"
+    ],
+    "LeanUV.TCP.Contract.output_prefix": [
+      "propext"
+    ],
+    "LeanUV.TCP.Contract.closed_write_released": [
+      "propext"
+    ],
+    "LeanUV.TCP.Contract.graceful_exact_output": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.replay_invariant": [],
+    "LeanUV.TCP.Machine.replay_length": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.scheduled_invariant": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.execution_invariant": [],
+    "LeanUV.TCP.Machine.execution_scheduled_invariant": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.adapter_output_prefix": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.adapter_graceful_output": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.adapter_input_prefix": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.finalizers_weight": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.adapter_finalizer_weight": [
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.responsive_descent": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "LeanUV.TCP.Machine.acknowledged_command_prefix": [
+      "propext"
+    ]
+  },
+  "explicit_hypotheses": [
+    "NativeContract",
+    "ProgressContract",
+    "Machine.ExecutionContract",
+    "Machine.AdapterContract",
+    "Machine.ResponsiveContract",
+    "Machine.CompletionContract"
+  ],
+  "native_implementation_proved": false,
+  "http_correctness_assumed": false
+}
